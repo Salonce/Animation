@@ -31,14 +31,15 @@ int main(int argc, char* args[])
     initializeSDL_Image(); // works without it... not sure if needed
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
-    std::vector<Sprite*> spritesVector;
+    SpriteRepository spriteRepository;
+    
+
     std::vector<Obj*> objsVector;
 
     TextureRepository textureRepository = TextureRepository(renderer);
-    SpriteFactory spriteFactory(&textureRepository);
+    SpriteFactory spriteFactory(&textureRepository, &spriteRepository);
     ObjFactory objFactory(&textureRepository);
 
-    Sprite::initializeSprites(&spritesVector);
     Obj::initializeObjs(&objsVector);
 
     srand((unsigned)time(nullptr)); int random = rand();  //// RANDOM NUMBER GENERATOR
@@ -65,11 +66,6 @@ int main(int argc, char* args[])
 
 
 
-
-
-
-
-
     if (window) {
         bool run = true;
         SDL_Event event;
@@ -93,7 +89,10 @@ int main(int argc, char* args[])
             character->move(getObstacles(objsVector, character));
 
 
-            std::vector<Renderable*> renderables = getRenderables(spritesVector, objsVector, character);
+            std::vector<Sprite*> sprites = spriteRepository.getAll();
+
+
+            std::vector<Renderable*> renderables = getRenderables(sprites, objsVector, character);
             std::sort(renderables.begin(), renderables.end(), CompareRenderables());
 
             for (Renderable* renderable : renderables) {

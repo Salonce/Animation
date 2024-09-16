@@ -4,17 +4,22 @@
 #include <Surface.h>
 #include <Sprite.h>
 #include <TextureRepository.h>
+#include <SpriteRepository.h>
 
 struct SpriteFactory {
 
 	TextureRepository* textureRepository;
+	SpriteRepository* spriteRepository;
 
-	SpriteFactory(TextureRepository* textureRepository) {
+	SpriteFactory(TextureRepository* textureRepository, SpriteRepository* spriteRepository) {
 		this->textureRepository = textureRepository;
+		this->spriteRepository = spriteRepository;
 	}
 
 	void grass(int x, int y) {
-		new Sprite(x, y, FLOOR, textureRepository->getBag("grass"));
+		Sprite* sprite = new Sprite(x, y, FLOOR, textureRepository->getBag("grass"));
+		spriteRepository->add(sprite);
+		// push this sprite into repo, then load from repo in Animation.cpp
 	}
 
 

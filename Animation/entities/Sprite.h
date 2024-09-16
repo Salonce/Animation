@@ -9,7 +9,7 @@
 #include "Renderable.h"
 #include "Surface.h"
 
-#include "TextureRepository.h"
+#include "SpriteRepository.h"
 #include <string>
 
 class Sprite : public Renderable {
@@ -17,7 +17,6 @@ class Sprite : public Renderable {
 protected:
 	std::vector<SDL_Texture*> textures;
 	Surface surface;
-	static std::vector<Sprite*>* spritesVector;
 	
 	int x;
 	int y;
@@ -36,7 +35,6 @@ public:
 		this->textures = textures;
 		setX(x);
 		setY(y);
-		Sprite::spritesVector->push_back(this);
 	}
 
 	int getX() const override { return x; }
@@ -50,7 +48,6 @@ public:
 	SDL_Texture* getTexture();
 
 	void animate() override;
-	static bool initializeSprites(std::vector<Sprite*>* spritesVector);
 };
 #endif
 

@@ -4,18 +4,6 @@
 #include "Sprite.h"
 
 Sprite::Sprite() {}
-std::vector<Sprite*>* Sprite::spritesVector = nullptr;
-
-bool Sprite::initializeSprites(std::vector<Sprite*>* spritesVector) {
-
-	Sprite::spritesVector = spritesVector;
-	if (Sprite::spritesVector == nullptr) {
-		printf("Sprite's not loaded\n");
-		return false;
-	}
-	return true;
-
-}
 
 void Sprite::animate() {
 	size_t size = textures.size();
