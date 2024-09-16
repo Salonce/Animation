@@ -47,16 +47,28 @@ int main(int argc, char* args[])
         }
     }
 
-    for (int i = 0; i <= 45; i++) {
+    for (int i = 0; i <= 25; i++) {
         int x = -64 + rand() % (renderer.getScreenWidth() + 128);
         int y = -64 + rand() % (renderer.getScreenHeight() + 128);
         objFactory.rock(x, y);
     }
 
-    for (int i = 0; i <= 45; i++) {
+    for (int i = 0; i <= 25; i++) {
         int x = -64 + rand() % (renderer.getScreenWidth() + 128);
         int y = -64 + rand() % (renderer.getScreenHeight() + 128);
         objFactory.tree(x, y);
+    }
+
+    for (int i = 0; i <= 10; i++) {
+        int x = -64 + rand() % (renderer.getScreenWidth() + 128);
+        int y = -64 + rand() % (renderer.getScreenHeight() + 128);
+        objFactory.willow(x, y);
+    }
+
+    for (int i = 0; i <= 10; i++) {
+        int x = -64 + rand() % (renderer.getScreenWidth() + 128);
+        int y = -64 + rand() % (renderer.getScreenHeight() + 128);
+        objFactory.puddle(x, y);
     }
 
     objFactory.makePlayer(314, 181);
