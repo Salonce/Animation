@@ -18,10 +18,15 @@ public:
         initialize_window(1220, 800);
         initializeRenderer();
         initializeSDL_Image();
+        SDL_SetRenderDrawColor(this->renderer, 0xFF, 0xFF, 0xFF, 0xFF);
     }
 
     SDL_Renderer*& getRenderer() {
         return this->renderer;
+    }
+
+    SDL_Window*& getWindow() {
+        return this->window;
     }
 
     void initialize_window(int screen_width, int screen_height) {

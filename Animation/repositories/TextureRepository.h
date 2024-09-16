@@ -9,6 +9,7 @@
 #include <unordered_map>
 
 #include "sdl_util.h"
+#include <Renderer.h>
 
 
 
@@ -16,13 +17,13 @@ class TextureRepository {
    
     std::unordered_map<std::string, SDL_Texture*> textures;
     std::unordered_map<std::string, std::vector<SDL_Texture*>> textureBag;
-    SDL_Renderer* renderer;
+    Renderer* renderer;
 
-    SDL_Texture* loadTexture(SDL_Renderer* renderer, std::string file_name);
+    SDL_Texture* loadTexture(Renderer* renderer, std::string file_name);
     SDL_Surface* loadSurface(const std::string& file_name);
 
 public:
-    TextureRepository(SDL_Renderer* renderer);
+    TextureRepository(Renderer* renderer);
 
     SDL_Texture* get(const std::string& name) {
         return textures[name];

@@ -16,7 +16,6 @@
 
 class RenderablesService {
 
-
     Renderer* renderer;
     PlayerRepository* playerRepository;
 	SpriteRepository* spriteRepository;
@@ -38,10 +37,11 @@ class RenderablesService {
     }
 
 public:
-    RenderablesService(PlayerRepository* playerRepository, SpriteRepository* spriteRepository, ObjRepository* objRepository) {
+    RenderablesService(PlayerRepository* playerRepository, SpriteRepository* spriteRepository, ObjRepository* objRepository, Renderer* renderer) {
         this->playerRepository = playerRepository;
         this->spriteRepository = spriteRepository;
         this->objRepository = objRepository;
+        this->renderer = renderer;
     }
 
 

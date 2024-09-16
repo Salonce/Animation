@@ -25,23 +25,24 @@
 #include "ObjRepository.h"
 #include "PlayerService.h"
 #include "PlayerRepository.h"
+#include "Renderer.h"
 
 int main(int argc, char* args[])
 {
-    const int screen_width = 1220;
-    const int screen_height = 800;
-    SDL_Window* window = initialize_window(screen_width, screen_height);
-    SDL_Renderer* renderer = initializeRenderer(window);
-    initializeSDL_Image(); // works without it... not sure if needed
-    SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
-    TextureRepository textureRepository = TextureRepository(renderer);
+    int screen_width = 1000;
+    int screen_height = 1000;
+
+    Renderer renderer;
+
+    TextureRepository textureRepository = TextureRepository(&renderer);
     PlayerRepository playerRepository;
     SpriteRepository spriteRepository;
     ObjRepository objRepository;
     PlayerService playerService(&playerRepository);
-    RenderablesService renderablesService(&playerRepository, &spriteRepository, &objRepository);
+    RenderablesService renderablesService(&playerRepository, &spriteRepository, &objRepository, &renderer);
 
+  
     
     SpriteFactory spriteFactory(&textureRepository, &spriteRepository);
     ObjFactory objFactory(&textureRepository, &objRepository, &playerRepository);
@@ -70,7 +71,7 @@ int main(int argc, char* args[])
     objFactory.makePlayer(314, 181);
 
 
-    if (window) {
+    if (renderer.getWindow()) {
         bool run = true;
         SDL_Event event;
 
@@ -87,26 +88,18 @@ int main(int argc, char* args[])
             playerService.handle(currentKeyStates);
 
             //RENDERING
-            SDL_RenderClear(renderer);
+            SDL_RenderClear(renderer.getRenderer());
 
             std::vector<Obj*> objsVect = objRepository.getAll();
             std::vector<Sprite*> sprites = spriteRepository.getAll();
 
             playerService.getPlayer()->move(getObstacles(objsVect, playerService.getPlayer()));
 
-            std::vector<Renderable*> renderables = getRenderables(sprites, objsVect, playerService.getPlayer());
+            renderablesService.renderAll();
 
-
-            std::sort(renderables.begin(), renderables.end(), CompareRenderables());
-
-            for (Renderable* renderable : renderables) {
-                renderable->animate();
-                renderTexture(renderer, renderable);
-            }
-
-            SDL_RenderPresent(renderer);
+            SDL_RenderPresent(renderer.getRenderer());
         }
     }
-    close(window); //textures not freed/destroyed
+    close(renderer.getWindow()); //textures not freed/destroyed
     return 0;
 }
