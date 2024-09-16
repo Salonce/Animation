@@ -4,6 +4,7 @@
 #include <Surface.h>
 #include <Obj.h>
 #include <SDL_rect.h>
+#include <Player.h>
 
 struct ObjFactory {
 
@@ -16,7 +17,7 @@ struct ObjFactory {
 	}
 
 	void player(int x, int y) {
-		new Obj(x, y, ON_FLOOR, "tree", SDL_Rect(18, 59, 25, 5));;
+		Player* character = new Player(x, y, "player");
 	}
 };
 
