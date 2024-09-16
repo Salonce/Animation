@@ -22,6 +22,7 @@
 #include <SpriteFactory.h>
 #include <ObjFactory.h>
 #include "SpriteRepository.h"
+#include "ObjRepository.h"
 
 int main(int argc, char* args[])
 {
@@ -33,13 +34,12 @@ int main(int argc, char* args[])
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
     SpriteRepository spriteRepository;
-    std::vector<Obj*> objsVector;
+    ObjRepository objRepository;
 
     TextureRepository textureRepository = TextureRepository(renderer);
     SpriteFactory spriteFactory(&textureRepository, &spriteRepository);
-    ObjFactory objFactory(&textureRepository);
+    ObjFactory objFactory(&textureRepository, &objRepository);
 
-    Obj::initializeObjs(&objsVector);
 
     srand((unsigned)time(nullptr)); int random = rand();  //// RANDOM NUMBER GENERATOR
 
@@ -85,12 +85,15 @@ int main(int argc, char* args[])
             if (!(currentKeyStates[SDL_SCANCODE_LEFT]) && !(currentKeyStates[SDL_SCANCODE_RIGHT])) player->handleEvent(Direction::SLOW_DOWN_HORIZONTALLY);
 
             SDL_RenderClear(renderer);
-            player->move(getObstacles(objsVector, player));
+
+            std::vector<Obj*> objsVect = objRepository.getAll();
+
+            player->move(getObstacles(objsVect, player));
 
 
             std::vector<Sprite*> sprites = spriteRepository.getAll();
 
-            std::vector<Renderable*> renderables = getRenderables(sprites, objsVector, player);
+            std::vector<Renderable*> renderables = getRenderables(sprites, objsVect, player);
 
 
             std::sort(renderables.begin(), renderables.end(), CompareRenderables());

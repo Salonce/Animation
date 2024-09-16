@@ -6,22 +6,27 @@
 #include <SDL_rect.h>
 #include <Player.h>
 #include <TextureRepository.h>
+#include <ObjRepository.h>
 
 struct ObjFactory {
 
 	TextureRepository* textureRepository;
+	ObjRepository* objRepository;
 
-	ObjFactory(TextureRepository* textureRepository) {
+	ObjFactory(TextureRepository* textureRepository, ObjRepository* objRepository) {
 		this->textureRepository = textureRepository;
+		this->objRepository = objRepository;
 	}
 
 
 	void rock(int x, int y) {
-		new Obj(x, y, ON_FLOOR, textureRepository->getBag("rock"), SDL_Rect(18, 59, 32, 5));;
+		Obj* rock = new Obj(x, y, ON_FLOOR, textureRepository->getBag("rock"), SDL_Rect(18, 59, 32, 5));
+		objRepository->add(rock);
 	}
 
 	void tree(int x, int y) {
-		new Obj(x, y, ON_FLOOR, textureRepository->getBag("tree"), SDL_Rect(18, 59, 25, 5));;
+		Obj* tree = new Obj(x, y, ON_FLOOR, textureRepository->getBag("tree"), SDL_Rect(18, 59, 25, 5));
+		objRepository->add(tree);
 	}
 
 	void player(int x, int y) {
