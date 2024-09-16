@@ -35,7 +35,8 @@ int main(int argc, char* args[])
     PlayerRepository playerRepository;
     SpriteRepository spriteRepository;
     ObjRepository objRepository;
-    PlayerService playerService(&playerRepository);
+    ObstaclesService obstaclesService(&objRepository, &playerRepository);
+    PlayerService playerService(&playerRepository, &obstaclesService);
     RenderablesService renderablesService(&playerRepository, &spriteRepository, &objRepository, &renderer);
 
     
@@ -87,7 +88,7 @@ int main(int argc, char* args[])
 
             std::vector<Obj*> objsVect = objRepository.getAll();
 
-            playerService.getPlayer()->move(getObstacles(objsVect, playerService.getPlayer()));
+            playerService.playerMoves();
 
             renderablesService.renderAll();
             SDL_RenderPresent(renderer.getRenderer());

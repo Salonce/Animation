@@ -21,7 +21,6 @@ public:
 		this->playerRepository = playerRepository;
 	}
 
-
 	std::vector<Obstacle*>* getObstacles() {
 		std::vector<Obstacle*>* obstaclesVector = new std::vector<Obstacle*>;
 
