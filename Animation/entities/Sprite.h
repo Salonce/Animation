@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "Surface.h"
 #include "Obstacle.h"
+//#include "TextureRepository.h"
 
 class Sprite : public Renderable {
 
@@ -25,8 +26,7 @@ protected:
 	int texture_stage = 0;
 
 public:
-
-	Sprite() {}
+	Sprite();
 
 	Sprite(int x, int y, Surface surface, std::vector<SDL_Texture*> &textures) {
 		this->surface = surface;
@@ -36,7 +36,6 @@ public:
 		Sprite::spritesVector->push_back(this);
 	}
 
-
 	int getX() const override { return this->x; }
 	int getY() const override { return this->y; }
 	void setX(int x) override { this->x = x; }
@@ -44,25 +43,11 @@ public:
 	int getSurface() override { return surface; };
 	int getWidth() const override { return img_width; }
 	int getHeight() const override { return img_height; }
-	SDL_Texture* getTexture() override {
-		if (this->textures.empty()) {
-			printf("Sprite texture is empty\n");
-		};
-		//printf("texture stage: %i\n", texture_stage);
-		return this->textures.at(texture_stage/60);
-	}
 
-	void animate() override {
-		size_t size = textures.size();
-		if (   ((texture_stage + 1) / 60) < size   )
-			texture_stage++;
-		else
-			texture_stage = 0;
-	}
+	SDL_Texture* getTexture();
 
+	void animate() override;
 	static bool initializeSprites(std::vector<Sprite*>* spritesVector);
 };
-
-
 #endif
 

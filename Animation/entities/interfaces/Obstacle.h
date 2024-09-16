@@ -1,7 +1,7 @@
 #ifndef OBSTACLE_H
 #define OBSTACLE_H
 
-#include <SDL.h>
+#include <SDL_rect.h>
 
 class Obstacle {
 

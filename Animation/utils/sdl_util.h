@@ -4,11 +4,10 @@
 #include <string>
 #include <vector>
 
-class Texture;
 class Sprite;
 class Obstacle;
-class Player;
-#include "Obj.h"
+#include <Player.h>;
+#include <Obj.h>;
 
 
 void close(SDL_Window* window);

@@ -13,7 +13,6 @@
 #include "CompareTexture.h"
 #include "Surface.h"
 #include "Obj.h"
-#include "sdl_util.h"
 
 int main(int argc, char* args[])
 {

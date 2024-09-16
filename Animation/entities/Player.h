@@ -1,11 +1,12 @@
-#ifndef CHARACTER_H 
-#define CHARACTER_H 
+#ifndef PLAYER_H 
+#define PLAYER_H 
 
+#include <vector>
 #include "Direction.h"
 #include "Surface.h"
 #include "Obstacle.h"
 #include "Texture.h"
-#include <vector>
+
 
 class Player : public Renderable, public Obstacle {
 
