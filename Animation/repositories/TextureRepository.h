@@ -14,7 +14,7 @@
 class TextureRepository {
    
     std::unordered_map<std::string, SDL_Texture*> textures;
-    std::unordered_map<std::string, std::vector<SDL_Texture*>*> textureBag;
+    std::unordered_map<std::string, std::vector<SDL_Texture*>> textureBag;
     SDL_Renderer* renderer;
 
 public:
@@ -27,21 +27,21 @@ public:
         this->textures["rock"] = loadTexture(renderer, "rock.png");
         this->textures["player"] = loadTexture(renderer, "player.png");
 
-        std::vector<SDL_Texture*>* tree_textures = new std::vector<SDL_Texture*>();
-        tree_textures->push_back(this->textures["tree"]);
-        tree_textures->push_back(this->textures["tree2"]);
+        std::vector<SDL_Texture*> tree_textures;
+        tree_textures.push_back(this->textures["tree"]);
+        tree_textures.push_back(this->textures["tree2"]);
         textureBag["tree"] = tree_textures;
 
-        std::vector<SDL_Texture*>* grass_textures = new std::vector<SDL_Texture*>();
-        grass_textures->push_back(this->textures["grass"]);
+        std::vector<SDL_Texture*> grass_textures;
+        grass_textures.push_back(this->textures["grass"]);
         textureBag["grass"] = grass_textures;
 
-        std::vector<SDL_Texture*>* rock_textures = new std::vector<SDL_Texture*>();
-        rock_textures->push_back(this->textures["rock"]);
+        std::vector<SDL_Texture*> rock_textures;
+        rock_textures.push_back(this->textures["rock"]);
         textureBag["rock"] = rock_textures;
 
-        std::vector<SDL_Texture*>* player_textures = new std::vector<SDL_Texture*>();
-        player_textures->push_back(this->textures["player"]);
+        std::vector<SDL_Texture*> player_textures;
+        player_textures.push_back(this->textures["player"]);
         textureBag["player"] = player_textures;
     }
 
@@ -49,7 +49,7 @@ public:
         return textures[name];
     }
 
-    std::vector<SDL_Texture*>* getBag(const std::string& name) {
+    std::vector<SDL_Texture*>& getBag(const std::string& name) {
         return textureBag[name];
     }
 

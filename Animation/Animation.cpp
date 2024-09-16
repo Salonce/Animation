@@ -43,24 +43,31 @@ int main(int argc, char* args[])
 
     for (int i = 0; i <= screen_width; i += 64) {
         for (int j = 0; j <= screen_height; j += 64) {
-            new Sprite(i, j, FLOOR, *textureRepository.getBag("grass"));
+            new Sprite(i, j, FLOOR, textureRepository.getBag("grass"));
         }
     }
 
     for (int i = 0; i <= 25; i++) {
         int x = -64 + rand() % (screen_width + 128);
         int y = -64 + rand() % (screen_height + 128);
-        new Obj(x, y, ON_FLOOR, *textureRepository.getBag("rock"), rock_rect);
+        new Obj(x, y, ON_FLOOR, textureRepository.getBag("rock"), rock_rect);
     }
 
     for (int i = 0; i <= 25; i++) {
         int x = -64 + rand() % (screen_width + 128);
         int y = -64 + rand() % (screen_height + 128);
         //new Obj(x, y, ON_FLOOR, tree_textures, tree_rect);
-        new Obj(x, y, ON_FLOOR, *textureRepository.getBag("tree"), tree_rect);
+        new Obj(x, y, ON_FLOOR, textureRepository.getBag("tree"), tree_rect);
     }
 
-    Player* character = new Player(215, 53, *textureRepository.getBag("player"));
+    Player* character = new Player(215, 53, textureRepository.getBag("player"));
+
+
+
+
+
+
+
 
     if (window) {
         bool run = true;

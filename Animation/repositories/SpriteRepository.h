@@ -18,8 +18,8 @@ public:
 			storage.push_back(sprite);
 	}
 
-	std::vector<Sprite*>* getAll() {
-		return &storage;
+	std::vector<Sprite*>& getAll() {
+		return storage;
 	}
 };
 
