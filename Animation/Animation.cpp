@@ -20,6 +20,7 @@
 #include <RenderablesService.h>
 #include <ObstaclesService.h>
 #include <SpriteFactory.h>
+#include <ObjFactory.h>
 
 int main(int argc, char* args[])
 {
@@ -35,14 +36,10 @@ int main(int argc, char* args[])
 
     TextureRepository textureRepository = TextureRepository(renderer);
     SpriteFactory spriteFactory;
+    ObjFactory objFactory;
 
     Sprite::initializeSprites(&spritesVector, &textureRepository);
     Obj::initializeObjs(&objsVector);
-
-   
-
-    SDL_Rect rock_rect = SDL_Rect(18, 59, 32, 5);
-    SDL_Rect tree_rect = SDL_Rect(18, 59, 25, 5);
 
     srand((unsigned)time(nullptr)); int random = rand();  //// RANDOM NUMBER GENERATOR
 
@@ -55,14 +52,13 @@ int main(int argc, char* args[])
     for (int i = 0; i <= 25; i++) {
         int x = -64 + rand() % (screen_width + 128);
         int y = -64 + rand() % (screen_height + 128);
-        new Obj(x, y, ON_FLOOR, "rock", rock_rect);
+        objFactory.rock(x, y);
     }
 
     for (int i = 0; i <= 25; i++) {
         int x = -64 + rand() % (screen_width + 128);
         int y = -64 + rand() % (screen_height + 128);
-        //new Obj(x, y, ON_FLOOR, tree_textures, tree_rect);
-        new Obj(x, y, ON_FLOOR, "tree", tree_rect);
+        objFactory.tree(x, y);
     }
 
     Player* character = new Player(215, 53, textureRepository.getBag("player"));
