@@ -12,6 +12,18 @@ class Renderer {
     int screen_width = 1220;
     int screen_height = 800;
 
+public:
+
+    Renderer() {
+        initialize_window(1220, 800);
+        initializeRenderer();
+        initializeSDL_Image();
+    }
+
+    SDL_Renderer*& getRenderer() {
+        return this->renderer;
+    }
+
     void initialize_window(int screen_width, int screen_height) {
         if (SDL_Init(SDL_INIT_VIDEO) < 0)
             printf("SDL could not initialize the window! SDL_Error: %s\n", SDL_GetError());
@@ -22,8 +34,8 @@ class Renderer {
         }
     }
 
-    void initializeRenderer(SDL_Window* sdl_window) {
-        this->renderer = SDL_CreateRenderer(sdl_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    void initializeRenderer() {
+        this->renderer = SDL_CreateRenderer(this->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
         if (renderer == nullptr)
             printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
     }
@@ -42,8 +54,6 @@ class Renderer {
         SDL_Quit();
     }
 };
-
-
 
 
 #endif // !"RENDERER_H"

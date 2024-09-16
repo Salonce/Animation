@@ -10,11 +10,13 @@
 #include <Player.h>
 #include <PlayerRepository.h>
 #include <CompareRenderables.h>
+#include <Renderer.h>
 
 
 class RenderablesService {
 
 
+    Renderer* renderer;
     PlayerRepository* playerRepository;
 	SpriteRepository* spriteRepository;
 	ObjRepository* objRepository;
@@ -40,6 +42,18 @@ public:
         this->spriteRepository = spriteRepository;
         this->objRepository = objRepository;
     }
+
+
+    void renderTexture(Renderable* texture) {
+        SDL_Rect viewport;
+        viewport.x = texture->getX();
+        viewport.y = texture->getY();
+        viewport.w = texture->getWidth();
+        viewport.h = texture->getHeight();
+        
+        SDL_RenderCopy(renderer->getRenderer(), texture->getTexture(), nullptr, &viewport);
+    }
+
 
     //void renderAll() {
     //    std::vector<Renderable*> renderables = getRenderables();
