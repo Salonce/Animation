@@ -9,6 +9,7 @@ class PlayerService {
 
 	Player* player = nullptr;
 
+public:
 
 	void handle(const Uint8* currentKeyStates) {
 		if (currentKeyStates[SDL_SCANCODE_UP]) player->handleEvent(Direction::UP);
@@ -18,8 +19,6 @@ class PlayerService {
 		if (!(currentKeyStates[SDL_SCANCODE_UP]) && !(currentKeyStates[SDL_SCANCODE_DOWN])) player->handleEvent(Direction::SLOW_DOWN);
 		if (!(currentKeyStates[SDL_SCANCODE_LEFT]) && !(currentKeyStates[SDL_SCANCODE_RIGHT])) player->handleEvent(Direction::SLOW_DOWN_HORIZONTALLY);
 	}
-
-public:
 
 	PlayerService() {};
 

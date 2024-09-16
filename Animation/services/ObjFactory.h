@@ -32,7 +32,7 @@ struct ObjFactory {
 		objRepository->add(tree);
 	}
 
-	void player(int x, int y) {
+	void makePlayer(int x, int y) {
 		playerServiceRepo->setPlayer(new Player(x, y, textureRepository->getBag("player")));
 		Player* character = new Player(x, y, textureRepository->getBag("player"));
 	}

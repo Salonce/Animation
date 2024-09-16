@@ -64,8 +64,7 @@ int main(int argc, char* args[])
         objFactory.tree(x, y);
     }
 
-    Player* player = new Player(215, 53, textureRepository.getBag("player"));
-
+    objFactory.makePlayer(314, 181);
 
 
     if (window) {
@@ -73,28 +72,26 @@ int main(int argc, char* args[])
         SDL_Event event;
 
         while (run) {
-            std::priority_queue<Renderable*, std::vector<Renderable*>, CompareRenderables> pq;
-            while (SDL_PollEvent(&event)) {
 
+            //KEY STROKES ACTIONS
+            while (SDL_PollEvent(&event)) {
                 if (event.type == SDL_QUIT)
                     run = false;
             }
-            const Uint8* currentKeyStates = SDL_GetKeyboardState(nullptr);
-            if (currentKeyStates[SDL_SCANCODE_UP]) player->handleEvent(Direction::UP);
-            if (currentKeyStates[SDL_SCANCODE_DOWN]) player->handleEvent(Direction::DOWN);
-            if (currentKeyStates[SDL_SCANCODE_LEFT]) player->handleEvent(Direction::LEFT);
-            if (currentKeyStates[SDL_SCANCODE_RIGHT]) player->handleEvent(Direction::RIGHT);
-            if (!(currentKeyStates[SDL_SCANCODE_UP]) && !(currentKeyStates[SDL_SCANCODE_DOWN])) player->handleEvent(Direction::SLOW_DOWN);
-            if (!(currentKeyStates[SDL_SCANCODE_LEFT]) && !(currentKeyStates[SDL_SCANCODE_RIGHT])) player->handleEvent(Direction::SLOW_DOWN_HORIZONTALLY);
 
+            //KEY STATES ACTIONS
+            const Uint8* currentKeyStates = SDL_GetKeyboardState(nullptr);
+            playerService.handle(currentKeyStates);
+
+            //RENDERING
             SDL_RenderClear(renderer);
 
             std::vector<Obj*> objsVect = objRepository.getAll();
             std::vector<Sprite*> sprites = spriteRepository.getAll();
 
-            player->move(getObstacles(objsVect, player));
+            playerService.getPlayer()->move(getObstacles(objsVect, playerService.getPlayer()));
 
-            std::vector<Renderable*> renderables = getRenderables(sprites, objsVect, player);
+            std::vector<Renderable*> renderables = getRenderables(sprites, objsVect, playerService.getPlayer());
 
 
             std::sort(renderables.begin(), renderables.end(), CompareRenderables());
