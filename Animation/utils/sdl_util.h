@@ -8,6 +8,7 @@ class Sprite;
 class Obstacle;
 class Player;
 class Obj;
+class Renderable;
 
 void close(SDL_Window* window);
 std::vector<Obstacle*>* getObstacles(std::vector<Obj*> objectsVector, Player* character);

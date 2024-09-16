@@ -2,8 +2,15 @@
 #include <SDL_image.h>
 #include <string>
 #include <stdio.h>
+#include <vector>
 
-#include "sdl_util.h"
+//interface
+#include "Renderable.h"
+#include "Obstacle.h"
+
+//classes
+#include "Obj.h"
+
 
 SDL_Window* initialize_window(int screen_width, int screen_height){
 

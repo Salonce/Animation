@@ -10,7 +10,7 @@
 #include "Player.h"
 #include "Sprite.h"
 #include "TextureRepository.h"
-#include "CompareTexture.h"
+#include "CompareRenderables.h"
 #include "Surface.h"
 #include "Obj.h"
 
