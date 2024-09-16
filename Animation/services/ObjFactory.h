@@ -5,6 +5,7 @@
 #include <Obj.h>
 #include <SDL_rect.h>
 #include <Player.h>
+#include <TextureRepository.h>
 
 struct ObjFactory {
 
