@@ -14,6 +14,10 @@ struct ObjFactory {
 	void tree(int x, int y) {
 		new Obj(x, y, ON_FLOOR, "tree", SDL_Rect(18, 59, 25, 5));;
 	}
+
+	void player(int x, int y) {
+		new Obj(x, y, ON_FLOOR, "tree", SDL_Rect(18, 59, 25, 5));;
+	}
 };
 
 

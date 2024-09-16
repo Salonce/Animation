@@ -40,6 +40,7 @@ int main(int argc, char* args[])
 
     Sprite::initializeSprites(&spritesVector, &textureRepository);
     Obj::initializeObjs(&objsVector);
+    Player::initialize(&textureRepository);
 
     srand((unsigned)time(nullptr)); int random = rand();  //// RANDOM NUMBER GENERATOR
 
@@ -61,7 +62,7 @@ int main(int argc, char* args[])
         objFactory.tree(x, y);
     }
 
-    Player* character = new Player(215, 53, textureRepository.getBag("player"));
+    Player* character = new Player(215, 53, "player");
 
 
 

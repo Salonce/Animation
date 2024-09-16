@@ -8,10 +8,12 @@
 #include "Renderable.h"
 #include "Direction.h"
 #include "Surface.h"
+#include <TextureRepository.h>
 
 class Player : public Renderable, public Obstacle {
 
 private:
+	static TextureRepository* textureRepository;
 	std::vector<SDL_Texture*> textures;
 
 	int x = 0;
@@ -27,10 +29,10 @@ private:
 
 public:
 
-	Player(int x, int y, std::vector<SDL_Texture*>& textures) {
+	Player(int x, int y, const std::string& bag_name) {
 		setX(x);
 		setY(y);
-		this->textures = textures;
+		this->textures = textureRepository->getBag(bag_name);
 	}
 	
 	int getX() const override {return x;}
@@ -62,7 +64,7 @@ public:
 	}
 
 	void handleEvent(Direction direction);
+	static bool initialize(TextureRepository* textureRepository);
 };
-
 
 #endif 

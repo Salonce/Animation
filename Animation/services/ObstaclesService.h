@@ -2,7 +2,7 @@
 #ifndef OBSTACLES_SERVICE_H
 #define OBSTACLES_SERVICE_H
 
-#include <vector>;
+#include <vector>
 class Obj;
 class Player;
 class Obstacle;
