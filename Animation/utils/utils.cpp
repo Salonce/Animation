@@ -29,42 +29,12 @@ SDL_Window* initialize_window(int screen_width, int screen_height){
     return sdl_window;
 }
 
-
-
 SDL_Renderer* initializeRenderer(SDL_Window* sdl_window) {
     SDL_Renderer* renderer = SDL_CreateRenderer(sdl_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (renderer == nullptr)
         printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
     return renderer;
 }
-
-SDL_Surface* loadSurface(const std::string& file_name) {
-    std::string fullPath = "images/" + file_name;
-    SDL_Surface* gHelloWorld = SDL_LoadBMP(fullPath.c_str());
-    if (gHelloWorld == nullptr)
-        printf("Unable to load image %s! SDL Error: %s\n", "images/demo.bmp", SDL_GetError());
-    return gHelloWorld;
-}
-
-
-SDL_Texture* loadTexture(SDL_Renderer* renderer, std::string file_name)
-{
-    std::string fullPath = "images/" + file_name;
-    SDL_Texture* newTexture = nullptr;
-    SDL_Surface* loadedSurface = IMG_Load(fullPath.c_str());
-    if (loadedSurface == nullptr)
-        printf("Unable to load image %s! SDL_image Error: %s\n", file_name.c_str(), IMG_GetError());
-    else
-    {
-        SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0xFF, 0, 0xFF));
-        newTexture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
-        if (newTexture == nullptr)
-            printf("Unable to create texture from %s! SDL Error: %s\n", file_name.c_str(), SDL_GetError());
-        SDL_FreeSurface(loadedSurface);
-    }
-    return newTexture;
-}
-
 
 bool initializeSDL_Image() {
     int imgFlags = IMG_INIT_PNG;
