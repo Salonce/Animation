@@ -29,6 +29,14 @@ public:
         return this->window;
     }
 
+    int getScreenWidth() {
+        return this->screen_width;
+    }
+
+    int getScreenHeight() {
+        return this->screen_height;
+    }
+
     void initialize_window(int screen_width, int screen_height) {
         if (SDL_Init(SDL_INIT_VIDEO) < 0)
             printf("SDL could not initialize the window! SDL_Error: %s\n", SDL_GetError());

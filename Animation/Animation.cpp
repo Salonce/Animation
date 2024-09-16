@@ -30,11 +30,7 @@
 int main(int argc, char* args[])
 {
 
-    int screen_width = 1000;
-    int screen_height = 1000;
-
     Renderer renderer;
-
     TextureRepository textureRepository = TextureRepository(&renderer);
     PlayerRepository playerRepository;
     SpriteRepository spriteRepository;
@@ -42,7 +38,6 @@ int main(int argc, char* args[])
     PlayerService playerService(&playerRepository);
     RenderablesService renderablesService(&playerRepository, &spriteRepository, &objRepository, &renderer);
 
-  
     
     SpriteFactory spriteFactory(&textureRepository, &spriteRepository);
     ObjFactory objFactory(&textureRepository, &objRepository, &playerRepository);
@@ -50,21 +45,21 @@ int main(int argc, char* args[])
 
     srand((unsigned)time(nullptr)); int random = rand();  //// RANDOM NUMBER GENERATOR
 
-    for (int i = 0; i <= screen_width; i += 64) {
-        for (int y = 0; y <= screen_height; y += 64) {
+    for (int i = 0; i <= renderer.getScreenWidth(); i += 64) {
+        for (int y = 0; y <= renderer.getScreenHeight(); y += 64) {
             spriteFactory.grass(i, y);
         }
     }
 
     for (int i = 0; i <= 45; i++) {
-        int x = -64 + rand() % (screen_width + 128);
-        int y = -64 + rand() % (screen_height + 128);
+        int x = -64 + rand() % (renderer.getScreenWidth() + 128);
+        int y = -64 + rand() % (renderer.getScreenHeight() + 128);
         objFactory.rock(x, y);
     }
 
     for (int i = 0; i <= 45; i++) {
-        int x = -64 + rand() % (screen_width + 128);
-        int y = -64 + rand() % (screen_height + 128);
+        int x = -64 + rand() % (renderer.getScreenWidth() + 128);
+        int y = -64 + rand() % (renderer.getScreenHeight() + 128);
         objFactory.tree(x, y);
     }
 
@@ -91,12 +86,10 @@ int main(int argc, char* args[])
             SDL_RenderClear(renderer.getRenderer());
 
             std::vector<Obj*> objsVect = objRepository.getAll();
-            std::vector<Sprite*> sprites = spriteRepository.getAll();
 
             playerService.getPlayer()->move(getObstacles(objsVect, playerService.getPlayer()));
 
             renderablesService.renderAll();
-
             SDL_RenderPresent(renderer.getRenderer());
         }
     }
