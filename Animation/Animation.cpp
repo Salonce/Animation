@@ -18,6 +18,9 @@
 #include "Obj.h"
 #include "sdl_util.h"
 #include "Renderable.h"
+#include <RenderablesService.h>
+#include <ObstaclesService.h>
+
 
 int main(int argc, char* args[])
 {

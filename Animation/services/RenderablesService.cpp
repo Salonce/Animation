@@ -3,6 +3,7 @@
 #include <Sprite.h>
 #include <Obj.h>
 #include <Player.h>
+#include <RenderablesService.h>
 
 std::vector<Renderable*> getRenderable(std::vector<Sprite*> spritesVector, std::vector<Obj*> objectsVector, Player* character) {
 

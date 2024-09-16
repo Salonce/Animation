@@ -11,8 +11,7 @@ class Obj;
 class Renderable;
 
 void close(SDL_Window* window);
-std::vector<Obstacle*>* getObstacles(std::vector<Obj*> objectsVector, Player* character);
-std::vector<Renderable*> getRenderable(std::vector<Sprite*> spritesVector, std::vector<Obj*> objectsVector, Player* character);
+
 SDL_Window* initialize_window(int screen_width, int screen_height);
 SDL_Renderer* initializeRenderer(SDL_Window* sdl_window);
 bool initializeSDL_Image();

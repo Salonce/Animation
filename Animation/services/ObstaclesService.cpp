@@ -2,6 +2,7 @@
 #include <Obj.h>
 #include <Obstacle.h>
 #include <Player.h>
+#include <ObstaclesService.h>
 
 std::vector<Obstacle*>* getObstacles(std::vector<Obj*> objectsVector, Player* character) {
 
