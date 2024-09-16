@@ -15,25 +15,27 @@ TextureRepository::TextureRepository(Renderer* renderer) {
     this->textures["grass"] = loadTexture(renderer, "grass.png");
     this->textures["rock"] = loadTexture(renderer, "rock.png");
     this->textures["player"] = loadTexture(renderer, "player.png");
+    this->textures["willow1"] = loadTexture(renderer, "willow1.png");
+    this->textures["willow2"] = loadTexture(renderer, "willow2.png");
+    this->textures["puddle1"] = loadTexture(renderer, "puddle1.png");
+    this->textures["puddle2"] = loadTexture(renderer, "puddle2.png");
 
-    std::vector<SDL_Texture*> tree_textures;
-    tree_textures.push_back(this->textures["tree"]);
-    tree_textures.push_back(this->textures["tree2"]);
-    textureBag["tree"] = tree_textures;
 
-    std::vector<SDL_Texture*> grass_textures;
-    grass_textures.push_back(this->textures["grass"]);
-    textureBag["grass"] = grass_textures;
+    addBag("tree", { "tree", "tree2" });
+    addBag("grass", { "grass" });
+    addBag("rock", { "rock" });
+    addBag("player", { "player" });
+    addBag("willow", { "willow1", "willow2"});
+    addBag("puddle", { "puddle1", "puddle2" });
 
-    std::vector<SDL_Texture*> rock_textures;
-    rock_textures.push_back(this->textures["rock"]);
-    textureBag["rock"] = rock_textures;
-
-    std::vector<SDL_Texture*> player_textures;
-    player_textures.push_back(this->textures["player"]);
-    textureBag["player"] = player_textures;
 }
-
+void TextureRepository::addBag(const std::string& textureName, const std::vector<std::string>& textureKeys) {
+    std::vector<SDL_Texture*> texturesList;
+    for (const auto& key : textureKeys) {
+        texturesList.push_back(this->textures[key]);
+    }
+    textureBag[textureName] = texturesList;
+}
 
 
 SDL_Texture* TextureRepository::loadTexture(Renderer* renderer, std::string file_name)

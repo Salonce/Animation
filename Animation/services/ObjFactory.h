@@ -32,6 +32,16 @@ struct ObjFactory {
 		objRepository->add(tree);
 	}
 
+	void puddle(int x, int y) {
+		Obj* puddle = new Obj(x, y, ON_FLOOR, textureRepository->getBag("puddle"), SDL_Rect(18, 59, 25, 5));
+		objRepository->add(puddle);
+	}
+	void willow(int x, int y) {
+		Obj* willow = new Obj(x, y, ON_FLOOR, textureRepository->getBag("willow"), SDL_Rect(18, 59, 25, 5));
+		objRepository->add(willow);
+	}
+
+
 	void makePlayer(int x, int y) {
 		Player* player = new Player(x, y, textureRepository->getBag("player"));
 		playerRepository->set(player);

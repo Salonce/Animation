@@ -9,7 +9,6 @@
 #include <algorithm>
 #include <ctime>
 
-#include "sdl_util.h"
 #include "TextureRepository.h"
 #include "CompareRenderables.h"
 #include "Renderable.h"
@@ -86,6 +85,6 @@ int main(int argc, char* args[])
         //RENDERING END
     }
 
-    close(renderer.getWindow()); //textures not freed/destroyed
+    renderer.close(); //textures not freed/destroyed
     return 0;
 }

@@ -8,7 +8,6 @@
 #include <format>
 #include <unordered_map>
 
-#include "sdl_util.h"
 #include <Renderer.h>
 
 
@@ -39,6 +38,8 @@ public:
             SDL_DestroyTexture(texture.second);
         }
     }
+
+    void addBag(const std::string& textureName, const std::vector<std::string>& textureKeys);
 };
 
 
