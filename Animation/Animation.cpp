@@ -39,9 +39,8 @@ int main(int argc, char* args[])
     PlayerRepository playerRepository;
     SpriteRepository spriteRepository;
     ObjRepository objRepository;
-    printf("PLAYER SET");
     PlayerService playerService(&playerRepository);
-    RenderablesService renderablesService(&playerService, &spriteRepository, &objRepository);
+    RenderablesService renderablesService(&playerRepository, &spriteRepository, &objRepository);
 
     
     SpriteFactory spriteFactory(&textureRepository, &spriteRepository);

@@ -22,7 +22,6 @@ struct ObjFactory {
 		this->playerRepository = playerRepository;
 	}
 
-
 	void rock(int x, int y) {
 		Obj* rock = new Obj(x, y, ON_FLOOR, textureRepository->getBag("rock"), SDL_Rect(18, 59, 32, 5));
 		objRepository->add(rock);
