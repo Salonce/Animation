@@ -15,11 +15,11 @@ class Obj : public Sprite, public Obstacle {
 
 public:
 
-	Obj(int x, int y, Surface surface, const std::string& bag_name, SDL_Rect rectangle)
+	Obj(int x, int y, Surface surface, std::vector<SDL_Texture*> textures, SDL_Rect rectangle)
 
 	{
 		this->surface = surface;
-		this->textures = textureRepository->getBag(bag_name);
+		this->textures = textures;
 		setX(x);
 		setY(y);
 

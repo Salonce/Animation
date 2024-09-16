@@ -8,12 +8,19 @@
 
 struct ObjFactory {
 
+	TextureRepository* textureRepository;
+
+	ObjFactory(TextureRepository* textureRepository) {
+		this->textureRepository = textureRepository;
+	}
+
+
 	void rock(int x, int y) {
-		new Obj(x, y, ON_FLOOR, "rock", SDL_Rect(18, 59, 32, 5));;
+		new Obj(x, y, ON_FLOOR, textureRepository->getBag("rock"), SDL_Rect(18, 59, 32, 5));;
 	}
 
 	void tree(int x, int y) {
-		new Obj(x, y, ON_FLOOR, "tree", SDL_Rect(18, 59, 25, 5));;
+		new Obj(x, y, ON_FLOOR, textureRepository->getBag("tree"), SDL_Rect(18, 59, 25, 5));;
 	}
 
 	void player(int x, int y) {

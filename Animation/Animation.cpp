@@ -35,10 +35,10 @@ int main(int argc, char* args[])
     std::vector<Obj*> objsVector;
 
     TextureRepository textureRepository = TextureRepository(renderer);
-    SpriteFactory spriteFactory;
-    ObjFactory objFactory;
+    SpriteFactory spriteFactory(&textureRepository);
+    ObjFactory objFactory(&textureRepository);
 
-    Sprite::initializeSprites(&spritesVector, &textureRepository);
+    Sprite::initializeSprites(&spritesVector);
     Obj::initializeObjs(&objsVector);
     Player::initialize(&textureRepository);
 
