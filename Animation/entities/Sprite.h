@@ -9,7 +9,7 @@
 #include "Renderable.h"
 #include "Surface.h"
 
-//#include "TextureRepository.h"
+#include "TextureRepository.h"
 
 class Sprite : public Renderable {
 

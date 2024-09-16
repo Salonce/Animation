@@ -9,14 +9,13 @@
 #include <algorithm>
 #include <ctime>
 
+#include "sdl_util.h"
 #include "Direction.h"
 #include "Player.h"
 #include "Sprite.h"
 #include "TextureRepository.h"
 #include "CompareRenderables.h"
-#include "Surface.h"
 #include "Obj.h"
-#include "sdl_util.h"
 #include "Renderable.h"
 #include <RenderablesService.h>
 #include <ObstaclesService.h>
