@@ -33,10 +33,12 @@ int main(int argc, char* args[])
     std::vector<Sprite*> spritesVector;
     std::vector<Obj*> objsVector;
 
-    Sprite::initializeSprites(&spritesVector);
+    TextureRepository textureRepository = TextureRepository(renderer);
+
+    Sprite::initializeSprites(&spritesVector, &textureRepository);
     Obj::initializeObjs(&objsVector);
 
-    TextureRepository textureRepository = TextureRepository(renderer);
+   
 
     SDL_Rect rock_rect = SDL_Rect(18, 59, 32, 5);
     SDL_Rect tree_rect = SDL_Rect(18, 59, 25, 5);

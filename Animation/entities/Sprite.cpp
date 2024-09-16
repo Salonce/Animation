@@ -1,17 +1,28 @@
-#include "Sprite.h"
 #include <cstdio>
 #include <vector>
 
+#include "Sprite.h"
+#include <TextureRepository.h>
+
 Sprite::Sprite() {}
 std::vector<Sprite*>* Sprite::spritesVector = nullptr;
+TextureRepository* Sprite::textureRepository = nullptr;
 
-bool Sprite::initializeSprites(std::vector<Sprite*>* spritesVector) {
+bool Sprite::initializeSprites(std::vector<Sprite*>* spritesVector, TextureRepository* textureRepository) {
+
 	Sprite::spritesVector = spritesVector;
 	if (Sprite::spritesVector == nullptr) {
 		printf("Sprite's not loaded\n");
 		return false;
 	}
+	Sprite::textureRepository = textureRepository;
+	if (Sprite::spritesVector == nullptr) {
+		printf("Texture repo's not loaded\n");
+		return false;
+	}
+
 	return true;
+
 }
 
 void Sprite::animate() {

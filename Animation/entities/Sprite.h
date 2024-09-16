@@ -17,6 +17,7 @@ protected:
 	std::vector<SDL_Texture*> textures;
 	Surface surface;
 	static std::vector<Sprite*>* spritesVector;
+	static TextureRepository* textureRepository;
 	
 	int x;
 	int y;
@@ -49,7 +50,7 @@ public:
 	SDL_Texture* getTexture();
 
 	void animate() override;
-	static bool initializeSprites(std::vector<Sprite*>* spritesVector);
+	static bool initializeSprites(std::vector<Sprite*>* spritesVector, TextureRepository* textureRepository);
 };
 #endif
 
