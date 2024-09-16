@@ -11,6 +11,7 @@
 #include <PlayerRepository.h>
 #include <CompareRenderables.h>
 #include <Renderer.h>
+#include <algorithm>
 
 
 class RenderablesService {
@@ -55,16 +56,16 @@ public:
     }
 
 
-    //void renderAll() {
-    //    std::vector<Renderable*> renderables = getRenderables();
+    void renderAll() {
+        std::vector<Renderable*> renderables = getRenderables();
 
-    //    std::sort(renderables.begin(), renderables.end(), CompareRenderables());
+        std::sort(renderables.begin(), renderables.end(), CompareRenderables());
 
-    //    for (Renderable* renderable : renderables) {
-    //        renderable->animate();
-    //        renderTexture(renderer, renderable);
-    //    }
-    //}
+        for (Renderable* renderable : renderables) {
+            renderable->animate();
+            renderTexture(renderable);
+        }
+    }
 
 };
 

@@ -2,7 +2,7 @@
 #define OBJ_REPOSITORY_H
 
 #include <vector>
-#include "Obj.h";
+#include "Obj.h"
 
 class ObjRepository {
 
