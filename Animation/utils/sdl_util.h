@@ -4,12 +4,10 @@
 #include <string>
 #include <vector>
 
-class Obj;
 class Sprite;
 class Obstacle;
 class Player;
-#include "Obj.h"
-
+class Obj;
 
 void close(SDL_Window* window);
 std::vector<Obstacle*>* getObstacles(std::vector<Obj*> objectsVector, Player* character);
