@@ -28,6 +28,11 @@ public:
 	Player* getPlayer() {
 		return playerRepository->get();
 	}
+
+	void playerMoves() {
+
+	}
+	//playerService.getPlayer()->move(getObstacles(objsVect, playerService.getPlayer()));
 };
 
 
