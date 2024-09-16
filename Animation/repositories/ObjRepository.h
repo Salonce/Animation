@@ -12,7 +12,7 @@ public:
 	ObjRepository() {}
 
 	void add(Obj* obj) {
-		if (obj != NULL)
+		if (obj != nullptr)
 			storage.push_back(obj);
 	}
 

@@ -24,6 +24,7 @@
 #include "SpriteRepository.h"
 #include "ObjRepository.h"
 #include "PlayerService.h"
+#include "PlayerRepository.h"
 
 int main(int argc, char* args[])
 {
@@ -34,14 +35,17 @@ int main(int argc, char* args[])
     initializeSDL_Image(); // works without it... not sure if needed
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
+    TextureRepository textureRepository = TextureRepository(renderer);
+    PlayerRepository playerRepository;
     SpriteRepository spriteRepository;
     ObjRepository objRepository;
-    PlayerService playerService;
+    printf("PLAYER SET");
+    PlayerService playerService(&playerRepository);
     RenderablesService renderablesService(&playerService, &spriteRepository, &objRepository);
 
-    TextureRepository textureRepository = TextureRepository(renderer);
+    
     SpriteFactory spriteFactory(&textureRepository, &spriteRepository);
-    ObjFactory objFactory(&textureRepository, &objRepository, &playerService);
+    ObjFactory objFactory(&textureRepository, &objRepository, &playerRepository);
 
 
     srand((unsigned)time(nullptr)); int random = rand();  //// RANDOM NUMBER GENERATOR

@@ -14,7 +14,7 @@ public:
 
 
 	void add(Sprite* sprite) {
-		if (sprite != NULL)
+		if (sprite != nullptr)
 			storage.push_back(sprite);
 	}
 

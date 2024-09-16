@@ -4,14 +4,15 @@
 
 #include <vector>
 #include <Player.h>
+#include <PlayerRepository.h>
 
 class PlayerService {
-
-	Player* player = nullptr;
+	PlayerRepository* playerRepository;
 
 public:
 
 	void handle(const Uint8* currentKeyStates) {
+		Player* player = this->playerRepository->get();
 		if (currentKeyStates[SDL_SCANCODE_UP]) player->handleEvent(Direction::UP);
 		if (currentKeyStates[SDL_SCANCODE_DOWN]) player->handleEvent(Direction::DOWN);
 		if (currentKeyStates[SDL_SCANCODE_LEFT]) player->handleEvent(Direction::LEFT);
@@ -20,17 +21,14 @@ public:
 		if (!(currentKeyStates[SDL_SCANCODE_LEFT]) && !(currentKeyStates[SDL_SCANCODE_RIGHT])) player->handleEvent(Direction::SLOW_DOWN_HORIZONTALLY);
 	}
 
-	PlayerService() {};
+	PlayerService(PlayerRepository* playerRepository) {
+		this->playerRepository = playerRepository;
+	};
 
 	Player* getPlayer() {
-		return player;
+		return playerRepository->get();
 	}
-	void setPlayer(Player* player) {
-		this->player = player;
-	}
-
 };
-
 
 
 
