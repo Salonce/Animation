@@ -1,7 +1,8 @@
 #ifndef SPRITE_REPOSITORY_H
 #define  SPRITE_REPOSITORY_H
 
-#include "Obj.h"
+#include <vector>
+
 class Sprite;
 
 class SpriteRepository {
