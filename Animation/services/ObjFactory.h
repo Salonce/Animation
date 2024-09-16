@@ -24,7 +24,7 @@ struct ObjFactory {
 	}
 
 	void player(int x, int y) {
-		Player* character = new Player(x, y, "player");
+		Player* character = new Player(x, y, textureRepository->getBag("player"));
 	}
 };
 

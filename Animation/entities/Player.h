@@ -13,7 +13,6 @@
 class Player : public Renderable, public Obstacle {
 
 private:
-	static TextureRepository* textureRepository;
 	std::vector<SDL_Texture*> textures;
 
 	int x = 0;
@@ -29,10 +28,10 @@ private:
 
 public:
 
-	Player(int x, int y, const std::string& bag_name) {
+	Player(int x, int y, std::vector<SDL_Texture*> textures) {
 		setX(x);
 		setY(y);
-		this->textures = textureRepository->getBag(bag_name);
+		this->textures = textures;
 	}
 	
 	int getX() const override {return x;}
@@ -64,7 +63,6 @@ public:
 	}
 
 	void handleEvent(Direction direction);
-	static bool initialize(TextureRepository* textureRepository);
 };
 
 #endif 

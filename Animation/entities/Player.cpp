@@ -126,14 +126,3 @@ void Player::handleEvent(Direction direction) {
 		break;
 	}
 }
-
-TextureRepository* Player::textureRepository = nullptr;
-
-bool Player::initialize(TextureRepository* textureRepository) {
-	Player::textureRepository = textureRepository;
-	if (Player::textureRepository == nullptr) {
-		printf("Player's texture repo's not loaded\n");
-		return false;
-	}
-	return true;
-};
