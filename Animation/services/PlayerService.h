@@ -23,6 +23,11 @@ class PlayerService {
 		if (!(currentKeyStates[SDL_SCANCODE_LEFT]) && !(currentKeyStates[SDL_SCANCODE_RIGHT])) player->handleEvent(Direction::SLOW_DOWN_HORIZONTALLY);
 	}
 
+public:
+	Player* getPlayer() {
+		return player;
+	}
+
 };
 
 
