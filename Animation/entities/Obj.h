@@ -4,8 +4,8 @@
 #include <SDL.h>
 #include <vector>
 
-#include <Sprite.h>
-#include <Obstacle.h>
+#include "Sprite.h"
+#include "Obstacle.h"
 #include "Texture.h"
 #include "Surface.h"
 
@@ -21,11 +21,11 @@ public:
 	{
 		this->surface = surface;
 		this->textures = textures;
-		this->x = x;
-		this->y = y;
+		setX(x);
+		setY(y);
 
-		rectangle.x += this->x;
-		rectangle.y += this->y;
+		rectangle.x += getX();
+		rectangle.y += getY();
 		this->rectangle = rectangle;
 		if (objsVector != nullptr) { objsVector->push_back(this); }
 		else printf("objsVector is not initialized\n");

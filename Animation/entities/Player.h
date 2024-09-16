@@ -27,8 +27,8 @@ private:
 public:
 
 	Player(int x, int y, std::vector<SDL_Texture*>& textures) {
-		this->x = x;
-		this->y = y;
+		setX(x);
+		setY(y);
 		this->textures = textures;
 	}
 	

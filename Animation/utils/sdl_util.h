@@ -6,8 +6,8 @@
 
 class Sprite;
 class Obstacle;
-#include <Player.h>;
-#include <Obj.h>;
+#include "Player.h"
+#include "Obj.h"
 
 
 void close(SDL_Window* window);
