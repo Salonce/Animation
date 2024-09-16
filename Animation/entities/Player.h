@@ -2,11 +2,12 @@
 #define PLAYER_H 
 
 #include <vector>
+
+//enums/interfaces
+#include "Obstacle.h"
+#include "Renderable.h"
 #include "Direction.h"
 #include "Surface.h"
-#include "Obstacle.h"
-#include "Texture.h"
-
 
 class Player : public Renderable, public Obstacle {
 

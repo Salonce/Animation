@@ -1,8 +1,8 @@
+
 #ifndef COMPARE_TEXTURE_H
 #define COMPARE_TEXTURE_H
 
-#include "Texture.h"
-
+#include <Renderable.h>
 
 struct CompareRenderables {
     const bool operator()(Renderable* t1, Renderable* t2) {

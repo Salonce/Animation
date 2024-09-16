@@ -6,7 +6,7 @@
 
 #include "Sprite.h"
 #include "Obstacle.h"
-#include "Texture.h"
+#include "Renderable.h"
 #include "Surface.h"
 
 class Obj : public Sprite, public Obstacle {

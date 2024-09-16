@@ -4,10 +4,13 @@
 #include <SDL.h>
 #include <vector>
 
-#include "Texture.h"
-#include "Player.h"
-#include "Surface.h"
+//interfaces/enums
 #include "Obstacle.h"
+#include "Renderable.h"
+#include "Surface.h"
+
+#include "Player.h"
+
 //#include "TextureRepository.h"
 
 class Sprite : public Renderable {

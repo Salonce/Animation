@@ -1,5 +1,5 @@
-#ifndef TEXTURE_H
-#define TEXTURE_H
+#ifndef RENDERABLE_H
+#define RENDERABLE_H
 
 #include <SDL_render.h>
 
