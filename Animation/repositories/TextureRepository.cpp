@@ -1,9 +1,38 @@
-#include <TextureRepository.h>
-
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
 #include <format>
+#include <vector>
+
+#include <TextureRepository.h>
+
+TextureRepository::TextureRepository(SDL_Renderer* renderer) {
+    this->renderer = renderer;
+
+    this->textures["tree"] = loadTexture(renderer, "tree.png");
+    this->textures["tree2"] = loadTexture(renderer, "tree2.png");
+    this->textures["grass"] = loadTexture(renderer, "grass.png");
+    this->textures["rock"] = loadTexture(renderer, "rock.png");
+    this->textures["player"] = loadTexture(renderer, "player.png");
+
+    std::vector<SDL_Texture*> tree_textures;
+    tree_textures.push_back(this->textures["tree"]);
+    tree_textures.push_back(this->textures["tree2"]);
+    textureBag["tree"] = tree_textures;
+
+    std::vector<SDL_Texture*> grass_textures;
+    grass_textures.push_back(this->textures["grass"]);
+    textureBag["grass"] = grass_textures;
+
+    std::vector<SDL_Texture*> rock_textures;
+    rock_textures.push_back(this->textures["rock"]);
+    textureBag["rock"] = rock_textures;
+
+    std::vector<SDL_Texture*> player_textures;
+    player_textures.push_back(this->textures["player"]);
+    textureBag["player"] = player_textures;
+}
+
 
 
 SDL_Texture* TextureRepository::loadTexture(SDL_Renderer* renderer, std::string file_name)
