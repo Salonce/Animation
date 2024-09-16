@@ -10,6 +10,7 @@
 #include "Surface.h"
 
 #include "TextureRepository.h"
+#include <string>
 
 class Sprite : public Renderable {
 
@@ -31,9 +32,9 @@ public:
 
 	Sprite();
 
-	Sprite(int x, int y, Surface surface, std::vector<SDL_Texture*> &textures) {
+	Sprite(int x, int y, Surface surface, const std::string& bag_name) {
 		this->surface = surface;
-		this->textures = textures;
+		this->textures = textureRepository->getBag(bag_name);
 		setX(x);
 		setY(y);
 		Sprite::spritesVector->push_back(this);

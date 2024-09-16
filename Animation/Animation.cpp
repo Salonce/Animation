@@ -47,7 +47,7 @@ int main(int argc, char* args[])
 
     for (int i = 0; i <= screen_width; i += 64) {
         for (int j = 0; j <= screen_height; j += 64) {
-            new Sprite(i, j, FLOOR, textureRepository.getBag("grass"));
+            new Sprite(i, j, FLOOR, "grass");
         }
     }
 
