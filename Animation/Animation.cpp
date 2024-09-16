@@ -93,7 +93,9 @@ int main(int argc, char* args[])
 
             SDL_RenderClear(renderer);
             character->move(getObstacles(objsVector, character));
-            std::vector<Renderable*> renderables = getRenderable(spritesVector, objsVector, character);
+
+
+            std::vector<Renderable*> renderables = getRenderables(spritesVector, objsVector, character);
             std::sort(renderables.begin(), renderables.end(), CompareRenderables());
 
             for (Renderable* renderable : renderables) {

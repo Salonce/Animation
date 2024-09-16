@@ -5,7 +5,7 @@
 #include <Player.h>
 #include <RenderablesService.h>
 
-std::vector<Renderable*> getRenderable(std::vector<Sprite*> spritesVector, std::vector<Obj*> objectsVector, Player* character) {
+std::vector<Renderable*> getRenderables(std::vector<Sprite*> spritesVector, std::vector<Obj*> objectsVector, Player* character) {
 
     std::vector<Renderable*> renderablesVector;
 

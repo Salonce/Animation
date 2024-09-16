@@ -4,14 +4,12 @@
 #include <stdio.h>
 #include <vector>
 #include <cstdio>
-//interface
-#include "Renderable.h"
-#include "Obstacle.h"
 
-//classes
-#include "Obj.h"
-#include "Player.h"
-#include "Sprite.h"
+
+//interface
+#include "sdl_util.h"
+#include "Renderable.h"
+
 
 SDL_Window* initialize_window(int screen_width, int screen_height){
 

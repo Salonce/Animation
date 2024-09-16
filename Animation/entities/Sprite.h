@@ -6,12 +6,8 @@
 #include <vector>
 
 //interfaces/enums
-#include "Obstacle.h"
 #include "Renderable.h"
 #include "Surface.h"
-
-// classes
-#include "Player.h"
 
 //#include "TextureRepository.h"
 
