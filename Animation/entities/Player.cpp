@@ -1,7 +1,8 @@
-
+#include <SDL.h>
 #include "Player.h"
 #include <Obstacle.h>
 #include <vector>
+
 
 void Player::move(std::vector<Obstacle*>* obstaclesVector) {
 

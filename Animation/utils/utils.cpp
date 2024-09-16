@@ -29,13 +29,7 @@ SDL_Window* initialize_window(int screen_width, int screen_height){
     return sdl_window;
 }
 
-void close(SDL_Window* window) // textures not destroyed
-{
-    if (window != nullptr) {
-        SDL_DestroyWindow(window);
-    }
-    SDL_Quit();
-}
+
 
 SDL_Renderer* initializeRenderer(SDL_Window* sdl_window) {
     SDL_Renderer* renderer = SDL_CreateRenderer(sdl_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -96,37 +90,10 @@ void renderTexture(SDL_Renderer* renderer, Renderable* texture) {
     SDL_RenderCopy(renderer, texture->getTexture(), nullptr, &viewport);
 }
 
-
-
-
-
-std::vector<Obstacle*>* getObstacles(std::vector<Obj*> objectsVector, Player* character) {
-
-    std::vector<Obstacle*>* obstaclesVector = new std::vector<Obstacle*>;
-
-    obstaclesVector->push_back(character);
-
-    for (Obj* obj : objectsVector) {
-        obstaclesVector->push_back(obj);
+void close(SDL_Window* window) // textures not destroyed
+{
+    if (window != nullptr) {
+        SDL_DestroyWindow(window);
     }
-
-    return obstaclesVector;
+    SDL_Quit();
 }
-
-std::vector<Renderable*> getRenderable(std::vector<Sprite*> spritesVector, std::vector<Obj*> objectsVector, Player* character) {
-
-    std::vector<Renderable*> renderablesVector;
-
-    renderablesVector.push_back(character);
-
-    for (Obj* obj : objectsVector) {
-        renderablesVector.push_back(obj);
-    }
-
-    for (Renderable* renderable : spritesVector) {
-        renderablesVector.push_back(renderable);
-    }
-
-    return renderablesVector;
-}
-

@@ -1,6 +1,7 @@
 #include <vector>
 
 #include "Obj.h"
+#include <cstdio>
 
 bool Obj::initializeObjs(std::vector<Obj*>* objsVector) {
 	Obj::objsVector = objsVector;

@@ -8,7 +8,7 @@ find_package(SDL2_IMAGE REQUIRED SDL2_image>=2.0.0)
 
 
 #add_executable (SDL2_Demo WIN32 )
-add_executable (Animation "Animation.cpp" "Animation.h" "entities/Obj.cpp" "entities/Obj.h" "entities/Player.cpp" "entities/Player.h" "entities/Sprite.cpp" "entities/Sprite.h" "entities/interfaces/Obstacle.h" "entities/interfaces/Renderable.h" "enums/Direction.h" "enums/Surface.h" "repositories/SpriteRepository.h" "repositories/TextureRepository.h" "services/SpriteService.h" "utils/CompareRenderables.h" "utils/sdl_util.h" "utils/utils.cpp")
+add_executable (Animation "Animation.cpp" "Animation.h" "entities/Obj.cpp" "entities/Obj.h" "entities/Player.cpp" "entities/Player.h" "entities/Sprite.cpp" "entities/Sprite.h" "entities/interfaces/Obstacle.h" "entities/interfaces/Renderable.h" "entities/enums/Direction.h" "entities/enums/Surface.h" "repositories/SpriteRepository.h" "repositories/TextureRepository.h" "services/SpriteService.h" "utils/CompareRenderables.h" "utils/sdl_util.h" "utils/utils.cpp" "services/ObstaclesService.cpp" "services/RenderablesService.cpp")
 
 
 
@@ -24,8 +24,8 @@ endif()
 
 
 target_include_directories(Animation PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/enums
     ${CMAKE_CURRENT_SOURCE_DIR}/entities
+    ${CMAKE_CURRENT_SOURCE_DIR}/entities/enums
     ${CMAKE_CURRENT_SOURCE_DIR}/entities/interfaces
     ${CMAKE_CURRENT_SOURCE_DIR}/repositories
     ${CMAKE_CURRENT_SOURCE_DIR}/utils

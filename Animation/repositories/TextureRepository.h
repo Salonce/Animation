@@ -53,9 +53,8 @@ public:
         return textureBag[name];
     }
 
-    //LATER TO DESTROY
+    /// UNFINISHED
     ~TextureRepository() {
-        // Free the textures when the repository is destroyed
         for (auto& texture : textures) {
             SDL_DestroyTexture(texture.second);
         }
