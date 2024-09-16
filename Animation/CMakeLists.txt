@@ -8,7 +8,7 @@ find_package(SDL2_IMAGE REQUIRED SDL2_image>=2.0.0)
 
 
 #add_executable (SDL2_Demo WIN32 )
-add_executable (Animation "Animation.cpp" "Animation.h" "entities/Obj.h" "entities/Player.cpp" "entities/Player.h" "entities/Sprite.cpp" "entities/Sprite.h" "entities/interfaces/Obstacle.h" "entities/interfaces/Renderable.h" "entities/enums/Direction.h" "entities/enums/Surface.h" "repositories/SpriteRepository.h" "repositories/TextureRepository.h"  "utils/CompareRenderables.h" "utils/sdl_util.h" "utils/graphics.cpp" "services/ObstaclesService.cpp" "services/RenderablesService.cpp" "services/ObstaclesService.h" "services/RenderablesService.h" "repositories/TextureRepository.cpp" "services/SpriteFactory.h" "services/ObjFactory.h")
+add_executable (Animation "Animation.cpp" "Animation.h" "entities/Obj.h" "entities/Player.cpp" "entities/Player.h" "entities/Sprite.cpp" "entities/Sprite.h" "entities/interfaces/Obstacle.h" "entities/interfaces/Renderable.h" "entities/enums/Direction.h" "entities/enums/Surface.h" "repositories/SpriteRepository.h" "repositories/TextureRepository.h"  "utils/CompareRenderables.h" "utils/sdl_util.h" "utils/graphics.cpp" "services/ObstaclesService.cpp" "services/RenderablesService.cpp" "services/ObstaclesService.h" "services/RenderablesService.h" "repositories/TextureRepository.cpp" "services/SpriteFactory.h" "services/ObjFactory.h" "services/PlayerService.h")
 
 
 

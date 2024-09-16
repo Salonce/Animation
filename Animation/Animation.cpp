@@ -49,13 +49,13 @@ int main(int argc, char* args[])
         }
     }
 
-    for (int i = 0; i <= 25; i++) {
+    for (int i = 0; i <= 45; i++) {
         int x = -64 + rand() % (screen_width + 128);
         int y = -64 + rand() % (screen_height + 128);
         objFactory.rock(x, y);
     }
 
-    for (int i = 0; i <= 25; i++) {
+    for (int i = 0; i <= 45; i++) {
         int x = -64 + rand() % (screen_width + 128);
         int y = -64 + rand() % (screen_height + 128);
         objFactory.tree(x, y);
@@ -87,11 +87,9 @@ int main(int argc, char* args[])
             SDL_RenderClear(renderer);
 
             std::vector<Obj*> objsVect = objRepository.getAll();
+            std::vector<Sprite*> sprites = spriteRepository.getAll();
 
             player->move(getObstacles(objsVect, player));
-
-
-            std::vector<Sprite*> sprites = spriteRepository.getAll();
 
             std::vector<Renderable*> renderables = getRenderables(sprites, objsVect, player);
 
