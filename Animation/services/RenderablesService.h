@@ -13,16 +13,19 @@
 
 class RenderablesService {
 
-    RenderablesService(PlayerService* playerServiceRepo, SpriteRepository* spriteRepository, ObjRepository* objRepository) {
-        this->playerServiceRepo = playerServiceRepo;
-        this->spriteRepository = spriteRepository;
-        this->objRepository = objRepository;
-    }
 
     PlayerService* playerServiceRepo;
 	SpriteRepository* spriteRepository;
 	ObjRepository* objRepository;
 
+
+
+public:
+    RenderablesService(PlayerService* playerServiceRepo, SpriteRepository* spriteRepository, ObjRepository* objRepository) {
+        this->playerServiceRepo = playerServiceRepo;
+        this->spriteRepository = spriteRepository;
+        this->objRepository = objRepository;
+    }
     std::vector<Renderable*> getRenderables() {
 
         std::vector<Renderable*> renderablesVector;
@@ -37,7 +40,6 @@ class RenderablesService {
 
         return renderablesVector;
     }
-
 };
 
 std::vector<Renderable*> getRenderables(std::vector<Sprite*> spritesVector, std::vector<Obj*> objectsVector, Player* character);

@@ -5,14 +5,10 @@
 #include <vector>
 #include <Player.h>
 
-
 class PlayerService {
 
-	Player* player;
+	Player* player = nullptr;
 
-	PlayerService(Player* player) {
-		this->player = player;
-	};
 
 	void handle(const Uint8* currentKeyStates) {
 		if (currentKeyStates[SDL_SCANCODE_UP]) player->handleEvent(Direction::UP);
@@ -24,8 +20,14 @@ class PlayerService {
 	}
 
 public:
+
+	PlayerService() {};
+
 	Player* getPlayer() {
 		return player;
+	}
+	void setPlayer(Player* player) {
+		this->player = player;
 	}
 
 };

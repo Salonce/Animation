@@ -23,6 +23,7 @@
 #include <ObjFactory.h>
 #include "SpriteRepository.h"
 #include "ObjRepository.h"
+#include "PlayerService.h"
 
 int main(int argc, char* args[])
 {
@@ -35,10 +36,12 @@ int main(int argc, char* args[])
 
     SpriteRepository spriteRepository;
     ObjRepository objRepository;
+    PlayerService playerService;
+    RenderablesService renderablesService(&playerService, &spriteRepository, &objRepository);
 
     TextureRepository textureRepository = TextureRepository(renderer);
     SpriteFactory spriteFactory(&textureRepository, &spriteRepository);
-    ObjFactory objFactory(&textureRepository, &objRepository);
+    ObjFactory objFactory(&textureRepository, &objRepository, &playerService);
 
 
     srand((unsigned)time(nullptr)); int random = rand();  //// RANDOM NUMBER GENERATOR

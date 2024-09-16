@@ -7,15 +7,18 @@
 #include <Player.h>
 #include <TextureRepository.h>
 #include <ObjRepository.h>
+#include "PlayerService.h"
 
 struct ObjFactory {
 
 	TextureRepository* textureRepository;
 	ObjRepository* objRepository;
+	PlayerService* playerServiceRepo;
 
-	ObjFactory(TextureRepository* textureRepository, ObjRepository* objRepository) {
+	ObjFactory(TextureRepository* textureRepository, ObjRepository* objRepository, PlayerService* playerServiceRepo) {
 		this->textureRepository = textureRepository;
 		this->objRepository = objRepository;
+		this->playerServiceRepo = playerServiceRepo;
 	}
 
 
@@ -30,6 +33,7 @@ struct ObjFactory {
 	}
 
 	void player(int x, int y) {
+		playerServiceRepo->setPlayer(new Player(x, y, textureRepository->getBag("player")));
 		Player* character = new Player(x, y, textureRepository->getBag("player"));
 	}
 };
