@@ -10,12 +10,8 @@
 #include <ctime>
 
 #include "sdl_util.h"
-#include "Direction.h"
-#include "Player.h"
-#include "Sprite.h"
 #include "TextureRepository.h"
 #include "CompareRenderables.h"
-#include "Obj.h"
 #include "Renderable.h"
 #include <RenderablesService.h>
 #include <ObstaclesService.h>
@@ -67,33 +63,29 @@ int main(int argc, char* args[])
     objFactory.makePlayer(314, 181);
 
 
-    if (renderer.getWindow()) {
-        bool run = true;
-        SDL_Event event;
+    bool run = true;
+    SDL_Event event;
 
-        while (run) {
+    while (run) {
+        
+        while (SDL_PollEvent(&event)) { //KEY STROKES ACTIONS
+            if (event.type == SDL_QUIT)
+                run = false;
+        } 
 
-            //KEY STROKES ACTIONS
-            while (SDL_PollEvent(&event)) {
-                if (event.type == SDL_QUIT)
-                    run = false;
-            }
+        const Uint8* currentKeyStates = SDL_GetKeyboardState(nullptr); //KEY STATES ACTIONS
+        playerService.handle(currentKeyStates); 
 
-            //KEY STATES ACTIONS
-            const Uint8* currentKeyStates = SDL_GetKeyboardState(nullptr);
-            playerService.handle(currentKeyStates);
+        //RENDERING START
+        renderer.clearBackBuffer(); 
 
-            //RENDERING
-            SDL_RenderClear(renderer.getRenderer());
+        playerService.playerMoves();
+        renderablesService.renderAll();
 
-            std::vector<Obj*> objsVect = objRepository.getAll();
-
-            playerService.playerMoves();
-
-            renderablesService.renderAll();
-            SDL_RenderPresent(renderer.getRenderer());
-        }
+        renderer.switchBuffers(); 
+        //RENDERING END
     }
+
     close(renderer.getWindow()); //textures not freed/destroyed
     return 0;
 }

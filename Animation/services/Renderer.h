@@ -37,6 +37,14 @@ public:
         return this->screen_height;
     }
 
+    void clearBackBuffer() {
+        SDL_RenderClear(renderer);
+    }
+    void switchBuffers() {
+        SDL_RenderPresent(renderer);
+    }
+
+
     void initialize_window(int screen_width, int screen_height) {
         if (SDL_Init(SDL_INIT_VIDEO) < 0)
             printf("SDL could not initialize the window! SDL_Error: %s\n", SDL_GetError());
