@@ -6,13 +6,18 @@
 #include <queue>
 #include<iostream>
 #include<cstdlib>
+#include <algorithm>
+#include <ctime>
 
+#include "Direction.h"
 #include "Player.h"
 #include "Sprite.h"
 #include "TextureRepository.h"
 #include "CompareRenderables.h"
 #include "Surface.h"
 #include "Obj.h"
+#include "sdl_util.h"
+#include "Renderable.h"
 
 int main(int argc, char* args[])
 {
@@ -34,7 +39,7 @@ int main(int argc, char* args[])
     SDL_Rect rock_rect = SDL_Rect(18, 59, 32, 5);
     SDL_Rect tree_rect = SDL_Rect(18, 59, 25, 5);
 
-    srand((unsigned)time(NULL)); int random = rand();  //// RANDOM NUMBER GENERATOR
+    srand((unsigned)time(nullptr)); int random = rand();  //// RANDOM NUMBER GENERATOR
 
     for (int i = 0; i <= screen_width; i += 64) {
         for (int j = 0; j <= screen_height; j += 64) {
@@ -68,7 +73,7 @@ int main(int argc, char* args[])
                 if (event.type == SDL_QUIT)
                     run = false;
             }
-            const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+            const Uint8* currentKeyStates = SDL_GetKeyboardState(nullptr);
             if (currentKeyStates[SDL_SCANCODE_UP]) character->handleEvent(Direction::UP);
             if (currentKeyStates[SDL_SCANCODE_DOWN]) character->handleEvent(Direction::DOWN);
             if (currentKeyStates[SDL_SCANCODE_LEFT]) character->handleEvent(Direction::LEFT);

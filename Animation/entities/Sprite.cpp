@@ -1,12 +1,13 @@
 #include "Sprite.h"
-
+#include <cstdio>
+#include <vector>
 
 Sprite::Sprite() {}
-std::vector<Sprite*>* Sprite::spritesVector = NULL;
+std::vector<Sprite*>* Sprite::spritesVector = nullptr;
 
 bool Sprite::initializeSprites(std::vector<Sprite*>* spritesVector) {
 	Sprite::spritesVector = spritesVector;
-	if (Sprite::spritesVector == NULL) {
+	if (Sprite::spritesVector == nullptr) {
 		printf("Sprite's not loaded\n");
 		return false;
 	}

@@ -3,14 +3,15 @@
 #include <string>
 #include <stdio.h>
 #include <vector>
-
+#include <cstdio>
 //interface
 #include "Renderable.h"
 #include "Obstacle.h"
 
 //classes
 #include "Obj.h"
-
+#include "Player.h"
+#include "Sprite.h"
 
 SDL_Window* initialize_window(int screen_width, int screen_height){
 
@@ -38,7 +39,7 @@ void close(SDL_Window* window) // textures not destroyed
 
 SDL_Renderer* initializeRenderer(SDL_Window* sdl_window) {
     SDL_Renderer* renderer = SDL_CreateRenderer(sdl_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    if (renderer == NULL)
+    if (renderer == nullptr)
         printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
     return renderer;
 }
@@ -63,7 +64,7 @@ SDL_Texture* loadTexture(SDL_Renderer* renderer, std::string file_name)
     {
         SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0xFF, 0, 0xFF));
         newTexture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
-        if (newTexture == NULL)
+        if (newTexture == nullptr)
             printf("Unable to create texture from %s! SDL Error: %s\n", file_name.c_str(), SDL_GetError());
         SDL_FreeSurface(loadedSurface);
     }
@@ -92,7 +93,7 @@ void renderTexture(SDL_Renderer* renderer, Renderable* texture) {
     //printf("w: %i, \n", viewport->w);
     //printf("h: %i, \n", viewport->h);
 
-    SDL_RenderCopy(renderer, texture->getTexture(), NULL, &viewport);
+    SDL_RenderCopy(renderer, texture->getTexture(), nullptr, &viewport);
 }
 
 
