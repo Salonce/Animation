@@ -21,6 +21,7 @@
 #include <ObstaclesService.h>
 #include <SpriteFactory.h>
 #include <ObjFactory.h>
+#include "SpriteRepository.h"
 
 int main(int argc, char* args[])
 {
@@ -62,7 +63,7 @@ int main(int argc, char* args[])
         objFactory.tree(x, y);
     }
 
-    Player* character = new Player(215, 53, textureRepository.getBag("player"));
+    Player* player = new Player(215, 53, textureRepository.getBag("player"));
 
 
 
@@ -78,21 +79,22 @@ int main(int argc, char* args[])
                     run = false;
             }
             const Uint8* currentKeyStates = SDL_GetKeyboardState(nullptr);
-            if (currentKeyStates[SDL_SCANCODE_UP]) character->handleEvent(Direction::UP);
-            if (currentKeyStates[SDL_SCANCODE_DOWN]) character->handleEvent(Direction::DOWN);
-            if (currentKeyStates[SDL_SCANCODE_LEFT]) character->handleEvent(Direction::LEFT);
-            if (currentKeyStates[SDL_SCANCODE_RIGHT]) character->handleEvent(Direction::RIGHT);
-            if (!(currentKeyStates[SDL_SCANCODE_UP]) && !(currentKeyStates[SDL_SCANCODE_DOWN])) character->handleEvent(Direction::SLOW_DOWN);
-            if (!(currentKeyStates[SDL_SCANCODE_LEFT]) && !(currentKeyStates[SDL_SCANCODE_RIGHT])) character->handleEvent(Direction::SLOW_DOWN_HORIZONTALLY);
+            if (currentKeyStates[SDL_SCANCODE_UP]) player->handleEvent(Direction::UP);
+            if (currentKeyStates[SDL_SCANCODE_DOWN]) player->handleEvent(Direction::DOWN);
+            if (currentKeyStates[SDL_SCANCODE_LEFT]) player->handleEvent(Direction::LEFT);
+            if (currentKeyStates[SDL_SCANCODE_RIGHT]) player->handleEvent(Direction::RIGHT);
+            if (!(currentKeyStates[SDL_SCANCODE_UP]) && !(currentKeyStates[SDL_SCANCODE_DOWN])) player->handleEvent(Direction::SLOW_DOWN);
+            if (!(currentKeyStates[SDL_SCANCODE_LEFT]) && !(currentKeyStates[SDL_SCANCODE_RIGHT])) player->handleEvent(Direction::SLOW_DOWN_HORIZONTALLY);
 
             SDL_RenderClear(renderer);
-            character->move(getObstacles(objsVector, character));
+            player->move(getObstacles(objsVector, player));
 
 
             std::vector<Sprite*> sprites = spriteRepository.getAll();
 
+            std::vector<Renderable*> renderables = getRenderables(sprites, objsVector, player);
 
-            std::vector<Renderable*> renderables = getRenderables(sprites, objsVector, character);
+
             std::sort(renderables.begin(), renderables.end(), CompareRenderables());
 
             for (Renderable* renderable : renderables) {
