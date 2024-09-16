@@ -19,7 +19,7 @@
 #include "Renderable.h"
 #include <RenderablesService.h>
 #include <ObstaclesService.h>
-
+#include <SpriteFactory.h>
 
 int main(int argc, char* args[])
 {
@@ -34,6 +34,7 @@ int main(int argc, char* args[])
     std::vector<Obj*> objsVector;
 
     TextureRepository textureRepository = TextureRepository(renderer);
+    SpriteFactory spriteFactory;
 
     Sprite::initializeSprites(&spritesVector, &textureRepository);
     Obj::initializeObjs(&objsVector);
@@ -46,8 +47,8 @@ int main(int argc, char* args[])
     srand((unsigned)time(nullptr)); int random = rand();  //// RANDOM NUMBER GENERATOR
 
     for (int i = 0; i <= screen_width; i += 64) {
-        for (int j = 0; j <= screen_height; j += 64) {
-            new Sprite(i, j, FLOOR, "grass");
+        for (int y = 0; y <= screen_height; y += 64) {
+            spriteFactory.grass(i, y);
         }
     }
 
