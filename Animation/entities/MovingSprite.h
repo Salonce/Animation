@@ -1,26 +1,30 @@
 #ifndef MOVING_SPRITE_H
 #define MOVING_SPRITE_H
 
+#include <SDL_render.h>
 #include <Sprite.h>
 #include <functional>
+#include "Surface.h"
+#include <vector>
+
 
 class MovingSprite : public Sprite {
 
-	using Mover = std::function<void(int&, int&)>;
-	Mover mover;
+	using AutoMover = std::function<void(int&, int&)>;
+	AutoMover autoMover;
 
 
 public:
-	MovingSprite(int x, int y, Surface surface, std::vector<SDL_Texture*> textures, Mover mover) :
-		Sprite(x, y, surface, textures), mover(mover){
+	MovingSprite(int x, int y, Surface surface, std::vector<SDL_Texture*> textures, AutoMover autoMover) :
+		Sprite(x, y, surface, textures), autoMover(autoMover){
 		
 	};
 	
 
 	void autoMove() {
-		mover(x, y);
+		autoMover(x, y);
 	}
-	void autoRemove();
+	//ivoid autoRemove();
 
 };
 

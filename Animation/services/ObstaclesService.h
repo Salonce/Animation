@@ -35,6 +35,5 @@ public:
 
 };
 
-std::vector<Obstacle*>* getObstacles(std::vector<Obj*> objectsVector, Player* character);
 
 #endif

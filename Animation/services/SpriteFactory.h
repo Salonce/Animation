@@ -10,6 +10,7 @@ struct SpriteFactory {
 
 	TextureRepository* textureRepository;
 	SpriteRepository* spriteRepository;
+	//MovingSpriteRepository* movingSpriteRepository;
 
 	SpriteFactory(TextureRepository* textureRepository, SpriteRepository* spriteRepository) {
 		this->textureRepository = textureRepository;

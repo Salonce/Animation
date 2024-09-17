@@ -3,20 +3,21 @@
 
 #include <vector>
 #include "Obj.h"
+#include <Repository.h>
 
-class ObjRepository {
+class ObjRepository : public Repository<Obj>{
 
 	std::vector<Obj*> storage;
 
 public:
 	ObjRepository() {}
 
-	void add(Obj* obj) {
+	void add(Obj* obj) override {
 		if (obj != nullptr)
 			storage.push_back(obj);
 	}
 
-	std::vector<Obj*>& getAll() {
+	std::vector<Obj*>& getAll() override {
 		return storage;
 	}
 };
