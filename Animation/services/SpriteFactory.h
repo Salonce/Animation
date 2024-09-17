@@ -6,6 +6,7 @@
 #include <TextureRepository.h>
 #include <SpriteRepository.h>
 #include <MovingSpriteRepository.h>
+#include <MovingSprite.h>
 
 struct SpriteFactory {
 
@@ -14,6 +15,7 @@ struct SpriteFactory {
 	MovingSpriteRepository* movingSpriteRepository;
 
 	SpriteFactory(TextureRepository* textureRepository, SpriteRepository* spriteRepository, MovingSpriteRepository* movingSpriteRepository) {
+		this->movingSpriteRepository = movingSpriteRepository;
 		this->textureRepository = textureRepository;
 		this->spriteRepository = spriteRepository;
 	}
@@ -24,7 +26,11 @@ struct SpriteFactory {
 		// push this sprite into repo, then load from repo in Animation.cpp
 	}
 
-
+	void clouds(int x, int y) {
+		MovingSprite* movingSprite = new MovingSprite(x, y, SKY, textureRepository->getBag("clouds"), [](int& x, int& y) {x--; });
+		movingSpriteRepository->add(movingSprite);
+		// push this sprite into repo, then load from repo in Animation.cpp
+	}
 
 
 private:

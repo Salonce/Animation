@@ -33,8 +33,8 @@ int main(int argc, char* args[])
     ObjRepository objRepository;
     ObstaclesService obstaclesService(&objRepository, &playerRepository);
     PlayerService playerService(&playerRepository, &obstaclesService);
-    RenderablesService renderablesService(&playerRepository, &spriteRepository, &objRepository, &renderer);
     MovingSpriteRepository movingSpriteRepository;
+    RenderablesService renderablesService(&playerRepository, &spriteRepository, &objRepository, &movingSpriteRepository ,&renderer);
     
     SpriteFactory spriteFactory(&textureRepository, &spriteRepository, &movingSpriteRepository);
     ObjFactory objFactory(&textureRepository, &objRepository, &playerRepository);
@@ -71,6 +71,8 @@ int main(int argc, char* args[])
         int y = -64 + rand() % (renderer.getScreenHeight() + 128);
         objFactory.puddle(x, y);
     }
+
+    spriteFactory.clouds(600, 559);
 
     objFactory.makePlayer(314, 181);
 

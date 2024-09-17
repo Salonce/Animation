@@ -19,7 +19,7 @@ TextureRepository::TextureRepository(Renderer* renderer) {
     this->textures["willow2"] = loadTexture(renderer, "willow2.png");
     this->textures["puddle1"] = loadTexture(renderer, "puddle1.png");
     this->textures["puddle2"] = loadTexture(renderer, "puddle2.png");
-
+    this->textures["clouds"] = loadTexture(renderer, "clouds.png");
 
     addBag("tree", { "tree", "tree2" });
     addBag("grass", { "grass" });
@@ -27,6 +27,8 @@ TextureRepository::TextureRepository(Renderer* renderer) {
     addBag("player", { "player" });
     addBag("willow", { "willow1", "willow2"});
     addBag("puddle", { "puddle1", "puddle2" });
+    addBag("clouds", { "clouds" });
+
 
 }
 void TextureRepository::addBag(const std::string& textureName, const std::vector<std::string>& textureKeys) {

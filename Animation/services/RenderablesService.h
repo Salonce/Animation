@@ -12,6 +12,8 @@
 #include <CompareRenderables.h>
 #include <Renderer.h>
 #include <algorithm>
+#include <MovingSpriteRepository.h>
+#include <MovingSprite.h>
 
 
 class RenderablesService {
@@ -20,12 +22,16 @@ class RenderablesService {
     PlayerRepository* playerRepository;
 	SpriteRepository* spriteRepository;
 	ObjRepository* objRepository;
+    MovingSpriteRepository* movingSpriteRepository;
 
     std::vector<Renderable*> getRenderables() {
 
         std::vector<Renderable*> renderablesVector;
 
         renderablesVector.push_back(playerRepository->get());
+
+        for (MovingSprite* movingSprite : movingSpriteRepository->getAll())
+            renderablesVector.push_back(movingSprite);
 
         for (Obj* obj : objRepository->getAll())
             renderablesVector.push_back(obj);
@@ -37,10 +43,11 @@ class RenderablesService {
     }
 
 public:
-    RenderablesService(PlayerRepository* playerRepository, SpriteRepository* spriteRepository, ObjRepository* objRepository, Renderer* renderer) {
+    RenderablesService(PlayerRepository* playerRepository, SpriteRepository* spriteRepository, ObjRepository* objRepository, MovingSpriteRepository* movingSpriteRepository, Renderer* renderer) {
         this->playerRepository = playerRepository;
         this->spriteRepository = spriteRepository;
         this->objRepository = objRepository;
+        this->movingSpriteRepository = movingSpriteRepository;
         this->renderer = renderer;
     }
 
