@@ -9,6 +9,7 @@
 #include "Direction.h"
 #include "Surface.h"
 #include <TextureRepository.h>
+#include <memory>
 
 class Player : public Renderable, public Obstacle {
 
@@ -44,7 +45,7 @@ public:
 
 	void animate() override {};
 
-	void move(std::vector<Obstacle*>* obstaclesVector) ;
+	void move(std::unique_ptr<std::vector<Obstacle*>>);
 
 	//MEMORY BOY
 	SDL_Rect& getRectangle() {

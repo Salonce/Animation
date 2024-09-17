@@ -5,6 +5,7 @@
 #include <vector>
 #include <ObjRepository.h>
 #include <PlayerRepository.h>
+#include <memory>
 class Obj;
 class Player;
 class Obstacle;
@@ -21,8 +22,8 @@ public:
 		this->playerRepository = playerRepository;
 	}
 
-	std::vector<Obstacle*>* getObstacles() {
-		std::vector<Obstacle*>* obstaclesVector = new std::vector<Obstacle*>;
+	std::unique_ptr<std::vector<Obstacle*>> getObstacles() {
+		auto obstaclesVector = std::make_unique<std::vector<Obstacle*>>();
 
 		obstaclesVector->push_back(playerRepository->get());
 

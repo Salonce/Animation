@@ -4,9 +4,10 @@
 #include <vector>
 #include <TextureRepository.h>
 #include <cstdio>
+#include <memory>
 
 
-void Player::move(std::vector<Obstacle*>* obstaclesVector) {
+void Player::move(std::unique_ptr<std::vector<Obstacle*>> obstaclesVector) {
 
 
 	bool blocked = false;

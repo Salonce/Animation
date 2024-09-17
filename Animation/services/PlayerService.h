@@ -15,7 +15,7 @@ class PlayerService {
 public:
 
 	void handle(const Uint8* currentKeyStates) {
-		Player* player = getPlayer();
+		Player*& player = getPlayer();
 		if (currentKeyStates[SDL_SCANCODE_UP]) player->handleEvent(Direction::UP);
 		if (currentKeyStates[SDL_SCANCODE_DOWN]) player->handleEvent(Direction::DOWN);
 		if (currentKeyStates[SDL_SCANCODE_LEFT]) player->handleEvent(Direction::LEFT);
@@ -29,7 +29,7 @@ public:
 		this->obstaclesService = obstaclesService;
 	};
 
-	Player* getPlayer() {
+	Player*& getPlayer() {
 		return playerRepository->get();
 	}
 

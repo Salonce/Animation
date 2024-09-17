@@ -22,7 +22,7 @@ public:
 			this->player = player;
 	}
 
-	Player* get() {
+	Player*& get() {
 		return player;
 	}
 };
