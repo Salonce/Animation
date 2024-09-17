@@ -13,17 +13,11 @@ class Obj : public Sprite, public Obstacle {
 
 public:
 
-	Obj(int x, int y, Surface surface, std::vector<SDL_Texture*> textures, SDL_Rect rectangle)
+	Obj(int x, int y, Surface surface, std::vector<SDL_Texture*> textures, SDL_Rect rectangle) : Sprite(x, y, surface, textures)
 	{
-		this->surface = surface;
-		this->textures = textures;
-		setX(x);
-		setY(y);
-
 		rectangle.x += getX();
 		rectangle.y += getY();
 		this->rectangle = rectangle;
-		//printf("x: %d, y: %d, w: %d, h: %d\n", rectangle.x, rectangle.y, rectangle.w, rectangle.h);
 	}
 
 	SDL_Rect& getRectangle() {
