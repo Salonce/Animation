@@ -22,6 +22,7 @@
 #include "PlayerRepository.h"
 #include "Renderer.h"
 #include "MovingSpriteRepository.h"
+#include <MovablesService.h>
 
 int main(int argc, char* args[])
 {
@@ -34,6 +35,7 @@ int main(int argc, char* args[])
     ObstaclesService obstaclesService(&objRepository, &playerRepository);
     PlayerService playerService(&playerRepository, &obstaclesService);
     MovingSpriteRepository movingSpriteRepository;
+    MovablesService movablesService(&movingSpriteRepository);
     RenderablesService renderablesService(&playerRepository, &spriteRepository, &objRepository, &movingSpriteRepository ,&renderer);
     
     SpriteFactory spriteFactory(&textureRepository, &spriteRepository, &movingSpriteRepository);
@@ -94,7 +96,9 @@ int main(int argc, char* args[])
         renderer.clearBackBuffer(); 
 
         playerService.playerMoves();
+        movablesService.autoMoveAll();
         renderablesService.renderAll();
+        
 
         renderer.switchBuffers(); 
         //RENDERING END
