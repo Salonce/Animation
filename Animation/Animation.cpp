@@ -21,6 +21,7 @@
 #include "PlayerService.h"
 #include "PlayerRepository.h"
 #include "Renderer.h"
+#include "MovingSpriteRepository.h"
 
 int main(int argc, char* args[])
 {
@@ -33,9 +34,9 @@ int main(int argc, char* args[])
     ObstaclesService obstaclesService(&objRepository, &playerRepository);
     PlayerService playerService(&playerRepository, &obstaclesService);
     RenderablesService renderablesService(&playerRepository, &spriteRepository, &objRepository, &renderer);
-
+    MovingSpriteRepository movingSpriteRepository;
     
-    SpriteFactory spriteFactory(&textureRepository, &spriteRepository);
+    SpriteFactory spriteFactory(&textureRepository, &spriteRepository, &movingSpriteRepository);
     ObjFactory objFactory(&textureRepository, &objRepository, &playerRepository);
 
 

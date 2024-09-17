@@ -5,14 +5,15 @@
 #include <Sprite.h>
 #include <TextureRepository.h>
 #include <SpriteRepository.h>
+#include <MovingSpriteRepository.h>
 
 struct SpriteFactory {
 
 	TextureRepository* textureRepository;
 	SpriteRepository* spriteRepository;
-	//MovingSpriteRepository* movingSpriteRepository;
+	MovingSpriteRepository* movingSpriteRepository;
 
-	SpriteFactory(TextureRepository* textureRepository, SpriteRepository* spriteRepository) {
+	SpriteFactory(TextureRepository* textureRepository, SpriteRepository* spriteRepository, MovingSpriteRepository* movingSpriteRepository) {
 		this->textureRepository = textureRepository;
 		this->spriteRepository = spriteRepository;
 	}
@@ -22,6 +23,8 @@ struct SpriteFactory {
 		spriteRepository->add(sprite);
 		// push this sprite into repo, then load from repo in Animation.cpp
 	}
+
+
 
 
 private:
