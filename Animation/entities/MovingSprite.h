@@ -24,7 +24,12 @@ public:
 	void autoMove() {
 		autoMover(x, y);
 	}
-	//ivoid autoRemove();
+
+	bool autoRemove() {
+		if (x < -100 || x > 1600 || y < -100 || y > 1600)
+			return true;
+		return false;
+	}
 
 };
 
