@@ -30,7 +30,7 @@ class RenderablesService {
 
         renderablesVector.push_back(playerRepository->get());
 
-        for (MovingSprite* movingSprite : movingSpriteRepository->getAll())
+        for (MovingSprite* movingSprite : movingSpriteRepository->getAll()) 
             renderablesVector.push_back(movingSprite);
 
         for (Obj* obj : objRepository->getAll())
@@ -75,7 +75,5 @@ public:
     }
 
 };
-
-std::vector<Renderable*> getRenderables(std::vector<Sprite*> spritesVector, std::vector<Obj*> objectsVector, Player* character);
 
 #endif
