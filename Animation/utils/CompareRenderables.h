@@ -13,10 +13,16 @@ struct CompareRenderables {
         if (a != b) {
             if (a > b)
                 return true;
-            else if (b > a)
-                return false;
+            return false;
         }
-        return t1->getY() < t2->getY();
+        a = t1->getY();
+        b = t2->getY();
+        if (a != b) {
+            if (a < b)
+                return true;
+            return false;
+        }
+        return t1->getX() < t2->getX();
     }
 };
 

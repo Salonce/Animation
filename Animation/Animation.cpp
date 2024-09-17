@@ -92,6 +92,17 @@ int main(int argc, char* args[])
         const Uint8* currentKeyStates = SDL_GetKeyboardState(nullptr); //KEY STATES ACTIONS
         playerService.handle(currentKeyStates); 
 
+        //GENERATE RANDOM 
+       // for (int i = 0; i <= 10; i++) {
+            int x = renderer.getScreenWidth() + 128 + 600;
+            int y = -64 + rand() % (renderer.getScreenHeight() + 128);
+            spriteFactory.clouds(x, y);
+      //  }
+
+        
+
+
+
         //RENDERING START
         renderer.clearBackBuffer(); 
 
