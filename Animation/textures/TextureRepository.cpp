@@ -47,3 +47,9 @@ SDL_Surface* TextureRepository::loadSurface(const std::string& file_name) {
         printf("Unable to load image %s! SDL Error: %s\n", "images/demo.bmp", SDL_GetError());
     return gHelloWorld;
 }
+
+SDL_Texture* TextureRepository::loadAlphaTexture(const char* file_name) {
+    SDL_Texture* sdl_texture = IMG_LoadTexture(renderer->getRenderer(), file_name) {
+
+    }
+}

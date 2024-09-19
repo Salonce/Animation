@@ -19,6 +19,8 @@ class TextureRepository {
 
     SDL_Texture* saveTexture(std::string file_name);
     SDL_Surface* loadSurface(const std::string& file_name);
+    SDL_Texture* loadAlphaTexture(const char* file_name);
+    
 
 public:
     TextureRepository(Renderer* renderer);
