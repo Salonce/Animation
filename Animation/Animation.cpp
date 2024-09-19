@@ -94,7 +94,7 @@ int main(int argc, char* args[])
 
         //GENERATE RANDOM 
         for (int i = 0; i <= 10; i++) {
-            int x = renderer.getScreenWidth() + 500;
+            int x = renderer.getScreenWidth() + 10;
             int y = -64 + rand() % (renderer.getScreenHeight() + 128);
             spriteFactory.clouds(x, y);
         }
