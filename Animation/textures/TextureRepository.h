@@ -18,7 +18,7 @@ class TextureRepository {
     std::unordered_map<std::string, std::vector<SDL_Texture*>> textureBag;
     Renderer* renderer;
 
-    SDL_Texture* loadTexture(std::string file_name);
+    SDL_Texture* saveTexture(std::string file_name);
     SDL_Surface* loadSurface(const std::string& file_name);
 
 public:

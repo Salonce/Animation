@@ -6,6 +6,7 @@
 
 #include <TextureRepository.h>
 #include <Renderer.h>
+#include <SDL_render.h>
 
 TextureRepository::TextureRepository(Renderer* renderer) {
     this->renderer = renderer;
@@ -20,18 +21,18 @@ TextureRepository::TextureRepository(Renderer* renderer) {
 
 
 }
-void TextureRepository::addBag(const std::string& textureName, const std::vector<std::string>& textureKeys) {
+void TextureRepository::addBag(const std::string& textureName, const std::vector<std::string>& fileNames) {
     std::vector<SDL_Texture*> texturesList;
-    for (const auto& key : textureKeys) {
-        if (textures.count(key) == 0)
-            this->textures[key] = loadTexture(key);
-        texturesList.push_back(this->textures[key]);
+    for (const auto& fileName : fileNames) {
+        if (textures.count(fileName) == 0)
+            this->textures[fileName] = saveTexture(fileName);
+        texturesList.push_back(this->textures[fileName]);
     }
     textureBag[textureName] = texturesList;
 }
 
 
-SDL_Texture* TextureRepository::loadTexture(std::string file_name)
+SDL_Texture* TextureRepository::saveTexture(std::string file_name)
 {
     std::string fullPath = "images/" + file_name;
     SDL_Texture* newTexture = nullptr;
