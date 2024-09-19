@@ -14,7 +14,6 @@
 
 class TextureRepository {
    
-    std::unordered_map<std::string, SDL_Texture*> textures;
     std::unordered_map<std::string, std::vector<SDL_Texture*>> textureBag;
     Renderer* renderer;
 
@@ -24,19 +23,12 @@ class TextureRepository {
 public:
     TextureRepository(Renderer* renderer);
 
-    SDL_Texture* get(const std::string& name) {
-        return textures[name];
-    }
-
     std::vector<SDL_Texture*>& getBag(const std::string& name) {
         return textureBag[name];
     }
 
     /// UNFINISHED
     ~TextureRepository() {
-        for (auto& texture : textures) {
-            SDL_DestroyTexture(texture.second);
-        }
     }
 
     void addBag(const std::string& textureName, const std::vector<std::string>& textureKeys);

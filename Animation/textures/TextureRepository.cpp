@@ -6,35 +6,24 @@
 
 #include <TextureRepository.h>
 #include <Renderer.h>
+#include <SDL_render.h>
 
 TextureRepository::TextureRepository(Renderer* renderer) {
     this->renderer = renderer;
 
-    this->textures["tree"] = loadTexture("tree.png");
-    this->textures["tree2"] = loadTexture("tree2.png");
-    this->textures["grass"] = loadTexture("grass.png");
-    this->textures["rock"] = loadTexture("rock.png");
-    this->textures["player"] = loadTexture("player.png");
-    this->textures["willow1"] = loadTexture("willow1.png");
-    this->textures["willow2"] = loadTexture("willow2.png");
-    this->textures["puddle1"] = loadTexture("puddle1.png");
-    this->textures["puddle2"] = loadTexture("puddle2.png");
-    this->textures["clouds"] = loadTexture("clouds.png");
-
-    addBag("tree", { "tree", "tree2" });
-    addBag("grass", { "grass" });
-    addBag("rock", { "rock" });
-    addBag("player", { "player" });
-    addBag("willow", { "willow1", "willow2"});
-    addBag("puddle", { "puddle1", "puddle2" });
-    addBag("clouds", { "clouds" });
-
+    addBag("tree", { "tree.png", "tree2.png" });
+    addBag("grass", { "grass.png" });
+    addBag("rock", { "rock.png" });
+    addBag("player", { "player.png" });
+    addBag("willow", { "willow1.png", "willow2.png"});
+    addBag("puddle", { "puddle1.png", "puddle2.png" });
+    addBag("clouds", { "clouds.png" });
 
 }
 void TextureRepository::addBag(const std::string& textureName, const std::vector<std::string>& textureKeys) {
     std::vector<SDL_Texture*> texturesList;
     for (const auto& key : textureKeys) {
-        texturesList.push_back(this->textures[key]);
+        texturesList.push_back(this->loadTexture(key));
     }
     textureBag[textureName] = texturesList;
 }
