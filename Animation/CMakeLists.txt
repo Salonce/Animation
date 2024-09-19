@@ -8,7 +8,32 @@ find_package(SDL2_IMAGE REQUIRED SDL2_image>=2.0.0)
 
 
 #add_executable (SDL2_Demo WIN32 )
-add_executable (Animation "Animation.cpp" "Animation.h" "entities/Obj.h" "players/Player.cpp" "players/Player.h" "sprites/Sprite.cpp" "sprites/Sprite.h" "obstacles/Obstacle.h" "renderables/Renderable.h" "entities/enums/Direction.h" "entities/enums/Surface.h" "sprites/SpriteRepository.h" "textures/TextureRepository.h"  "utils/CompareRenderables.h"     "obstacles/ObstaclesService.h" "renderables/RenderablesService.h" "textures/TextureRepository.cpp" "sprites/SpriteFactory.h" "services/ObjFactory.h" "players/PlayerService.h" "players/PlayerRepository.h" "renderables/Renderer.h" "movingSprites/MovingSprite.h" "movingSprites/MovingSpriteRepository.h" "entities/interfaces/Repository.h" "services/MovablesService.h")
+add_executable (Animation 
+    "Animation.cpp" 
+    "Animation.h" 
+    "movingSprites/MovingSprite.h" 
+    "movingSprites/MovingSpriteRepository.h" 
+    "movingSprites/MovablesService.h" 
+    "obstacles/Obstacle.h" 
+    "obstacles/ObstaclesService.h" 
+    "objs/Obj.h"
+    "objs/ObjFactory.h"
+    "objs/ObjRepository.h"
+    "players/Player.cpp" 
+    "players/Player.h" 
+    "players/PlayerRepository.h" 
+    "players/PlayerService.h" 
+    "renderables/Renderable.h" 
+    "renderables/RenderablesService.h" 
+    "renderables/Renderer.h" 
+    "renderables/CompareRenderables.h"
+    "sprites/Sprite.cpp" 
+    "sprites/Sprite.h" 
+    "sprites/SpriteFactory.h" 
+    "sprites/SpriteRepository.h" 
+    "textures/TextureRepository.cpp" 
+    "textures/TextureRepository.h"
+)
 
 
 
@@ -26,11 +51,12 @@ endif()
 target_include_directories(Animation PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/enums
     ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
-    ${CMAKE_CURRENT_SOURCE_DIR}/services
     ${CMAKE_CURRENT_SOURCE_DIR}/sprites
     ${CMAKE_CURRENT_SOURCE_DIR}/players
     ${CMAKE_CURRENT_SOURCE_DIR}/textures
     ${CMAKE_CURRENT_SOURCE_DIR}/obstacles
     ${CMAKE_CURRENT_SOURCE_DIR}/renderables
+    ${CMAKE_CURRENT_SOURCE_DIR}/objs
+    ${CMAKE_CURRENT_SOURCE_DIR}/movingSprites
 )
 

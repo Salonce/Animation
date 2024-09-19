@@ -10,16 +10,16 @@
 TextureRepository::TextureRepository(Renderer* renderer) {
     this->renderer = renderer;
 
-    this->textures["tree"] = loadTexture(renderer, "tree.png");
-    this->textures["tree2"] = loadTexture(renderer, "tree2.png");
-    this->textures["grass"] = loadTexture(renderer, "grass.png");
-    this->textures["rock"] = loadTexture(renderer, "rock.png");
-    this->textures["player"] = loadTexture(renderer, "player.png");
-    this->textures["willow1"] = loadTexture(renderer, "willow1.png");
-    this->textures["willow2"] = loadTexture(renderer, "willow2.png");
-    this->textures["puddle1"] = loadTexture(renderer, "puddle1.png");
-    this->textures["puddle2"] = loadTexture(renderer, "puddle2.png");
-    this->textures["clouds"] = loadTexture(renderer, "clouds.png");
+    this->textures["tree"] = loadTexture("tree.png");
+    this->textures["tree2"] = loadTexture("tree2.png");
+    this->textures["grass"] = loadTexture("grass.png");
+    this->textures["rock"] = loadTexture("rock.png");
+    this->textures["player"] = loadTexture("player.png");
+    this->textures["willow1"] = loadTexture("willow1.png");
+    this->textures["willow2"] = loadTexture("willow2.png");
+    this->textures["puddle1"] = loadTexture("puddle1.png");
+    this->textures["puddle2"] = loadTexture("puddle2.png");
+    this->textures["clouds"] = loadTexture("clouds.png");
 
     addBag("tree", { "tree", "tree2" });
     addBag("grass", { "grass" });
@@ -40,7 +40,7 @@ void TextureRepository::addBag(const std::string& textureName, const std::vector
 }
 
 
-SDL_Texture* TextureRepository::loadTexture(Renderer* renderer, std::string file_name)
+SDL_Texture* TextureRepository::loadTexture(std::string file_name)
 {
     std::string fullPath = "images/" + file_name;
     SDL_Texture* newTexture = nullptr;
@@ -50,7 +50,7 @@ SDL_Texture* TextureRepository::loadTexture(Renderer* renderer, std::string file
     else
     {
         SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0xFF, 0, 0xFF));
-        newTexture = SDL_CreateTextureFromSurface(renderer->getRenderer(), loadedSurface);
+        newTexture = SDL_CreateTextureFromSurface(this->renderer->getRenderer(), loadedSurface);
         if (newTexture == nullptr)
             printf("Unable to create texture from %s! SDL Error: %s\n", file_name.c_str(), SDL_GetError());
         SDL_FreeSurface(loadedSurface);
