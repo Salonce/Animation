@@ -6,7 +6,6 @@
 
 #include <TextureRepository.h>
 #include <Renderer.h>
-#include <SDL_render.h>
 
 TextureRepository::TextureRepository(Renderer* renderer) {
     this->renderer = renderer;
@@ -19,11 +18,14 @@ TextureRepository::TextureRepository(Renderer* renderer) {
     addBag("puddle", { "puddle1.png", "puddle2.png" });
     addBag("clouds", { "clouds.png" });
 
+
 }
 void TextureRepository::addBag(const std::string& textureName, const std::vector<std::string>& textureKeys) {
     std::vector<SDL_Texture*> texturesList;
     for (const auto& key : textureKeys) {
-        texturesList.push_back(this->loadTexture(key));
+        if (textures.count(key) == 0)
+            this->textures[key] = loadTexture(key);
+        texturesList.push_back(this->textures[key]);
     }
     textureBag[textureName] = texturesList;
 }
@@ -39,7 +41,7 @@ SDL_Texture* TextureRepository::loadTexture(std::string file_name)
     else
     {
         SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0xFF, 0, 0xFF));
-        newTexture = SDL_CreateTextureFromSurface(this->renderer->getRenderer(), loadedSurface);
+        newTexture = SDL_CreateTextureFromSurface(renderer->getRenderer(), loadedSurface);
         if (newTexture == nullptr)
             printf("Unable to create texture from %s! SDL Error: %s\n", file_name.c_str(), SDL_GetError());
         SDL_FreeSurface(loadedSurface);
