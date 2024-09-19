@@ -21,13 +21,13 @@ struct SpriteFactory {
 	}
 
 	void grass(int x, int y) {
-		Sprite* sprite = new Sprite(x, y, FLOOR, textureRepository->getBag("grass"));
+		Sprite* sprite = new Sprite(x, y, FLOOR, textureRepository->newGroup({"grass.png"}));
 		spriteRepository->add(sprite);
 		// push this sprite into repo, then load from repo in Animation.cpp
 	}
 
 	void clouds(int x, int y) {
-		MovingSprite* movingSprite = new MovingSprite(x, y, SKY, textureRepository->getBag("clouds"), [](int& x, int& y) {x--; });
+		MovingSprite* movingSprite = new MovingSprite(x, y, SKY, textureRepository->newGroup({ "clouds.png" }), [](int& x, int& y) {x--; });
 		movingSpriteRepository->add(movingSprite);
 		// push this sprite into repo, then load from repo in Animation.cpp
 	}

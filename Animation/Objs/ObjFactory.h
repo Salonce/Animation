@@ -23,27 +23,27 @@ struct ObjFactory {
 	}
 
 	void rock(int x, int y) {
-		Obj* rock = new Obj(x, y, ON_FLOOR, textureRepository->getBag("rock"), SDL_Rect(18, 59, 32, 5));
+		Obj* rock = new Obj(x, y, ON_FLOOR, textureRepository->newGroup({ "rock.png" }), SDL_Rect(18, 59, 32, 5));
 		objRepository->add(rock);
 	}
 
 	void tree(int x, int y) {
-		Obj* tree = new Obj(x, y, ON_FLOOR, textureRepository->getBag("tree"), SDL_Rect(18, 59, 25, 5));
+		Obj* tree = new Obj(x, y, ON_FLOOR, textureRepository->newGroup({ "tree.png", "tree2.png"}), SDL_Rect(18, 59, 25, 5));
 		objRepository->add(tree);
 	}
 
 	void puddle(int x, int y) {
-		Obj* puddle = new Obj(x, y, ON_FLOOR, textureRepository->getBag("puddle"), SDL_Rect(18, 59, 25, 5));
+		Obj* puddle = new Obj(x, y, ON_FLOOR, textureRepository->newGroup({ "puddle1.png", "puddle2.png"}), SDL_Rect(18, 59, 25, 5));
 		objRepository->add(puddle);
 	}
 	void willow(int x, int y) {
-		Obj* willow = new Obj(x, y, ON_FLOOR, textureRepository->getBag("willow"), SDL_Rect(18, 59, 25, 5));
+		Obj* willow = new Obj(x, y, ON_FLOOR, textureRepository->newGroup({ "willow1.png", "willow2.png"}), SDL_Rect(18, 59, 25, 5));
 		objRepository->add(willow);
 	}
 
 
 	void makePlayer(int x, int y) {
-		Player* player = new Player(x, y, textureRepository->getBag("player"));
+		Player* player = new Player(x, y, textureRepository->newGroup({ "player.png" }));
 		playerRepository->set(player);
 		printf("PLAAA");
 

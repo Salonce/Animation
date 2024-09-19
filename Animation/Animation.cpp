@@ -52,37 +52,29 @@ int main(int argc, char* args[])
         }
     }
 
-    for (int i = 0; i <= 25; i++) {
-        int x = -64 + rand() % (renderer.getScreenWidth() + 128);
-        int y = -64 + rand() % (renderer.getScreenHeight() + 128);
+    for (int i = 0; i < 25; i++) {
+        int x = -64 + rand() % (renderer.getScreenWidth());
+        int y = -64 + rand() % (renderer.getScreenHeight());
         objFactory.rock(x, y);
     }
 
-    for (int i = 0; i <= 25; i++) {
-        int x = -64 + rand() % (renderer.getScreenWidth() + 128);
-        int y = -64 + rand() % (renderer.getScreenHeight() + 128);
+    for (int i = 0; i < 25; i++) {
+        int x = -64 + rand() % (renderer.getScreenWidth());
+        int y = -64 + rand() % (renderer.getScreenHeight());
         objFactory.tree(x, y);
     }
 
-    for (int i = 0; i <= 10; i++) {
-        int x = -64 + rand() % (renderer.getScreenWidth() + 128);
-        int y = -64 + rand() % (renderer.getScreenHeight() + 128);
+    for (int i = 0; i < 10; i++) {
+        int x = -64 + rand() % (renderer.getScreenWidth());
+        int y = -64 + rand() % (renderer.getScreenHeight());
         objFactory.willow(x, y);
     }
 
-    for (int i = 0; i <= 10; i++) {
-        int x = -64 + rand() % (renderer.getScreenWidth() + 128);
-        int y = -64 + rand() % (renderer.getScreenHeight() + 128);
+    for (int i = 0; i < 10; i++) {
+        int x = -64 + rand() % (renderer.getScreenWidth());
+        int y = -64 + rand() % (renderer.getScreenHeight());
         objFactory.puddle(x, y);
     }
-
-
-    objFactory.willow(85, 11);
-    objFactory.willow(85, 71);
-    objFactory.puddle(51, 89);
-
-
-    spriteFactory.clouds(600, 559);
 
     objFactory.makePlayer(314, 181);
 
@@ -102,9 +94,9 @@ int main(int argc, char* args[])
 
         //GENERATE RANDOM 
        // for (int i = 0; i <= 10; i++) {
-            int x = renderer.getScreenWidth() + 500;
-            int y = -64 + rand() % (renderer.getScreenHeight() + 128);
-            spriteFactory.clouds(x, y);
+            //int x = renderer.getScreenWidth() + 500;
+            //int y = -64 + rand() % (renderer.getScreenHeight() + 128);
+            //spriteFactory.clouds(x, y);
       //  }
 
         

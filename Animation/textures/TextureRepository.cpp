@@ -10,27 +10,17 @@
 
 TextureRepository::TextureRepository(Renderer* renderer) {
     this->renderer = renderer;
-
-    addBag("tree", { "tree.png", "tree2.png" });
-    addBag("grass", { "grass.png" });
-    addBag("rock", { "rock.png" });
-    addBag("player", { "player.png" });
-    addBag("willow", { "willow1.png", "willow2.png"});
-    addBag("puddle", { "puddle1.png", "puddle2.png" });
-    addBag("clouds", { "clouds.png" });
-
-
 }
-void TextureRepository::addBag(const std::string& textureName, const std::vector<std::string>& fileNames) {
+
+std::vector<SDL_Texture*> TextureRepository::newGroup(const std::vector<std::string>& fileNames) {
     std::vector<SDL_Texture*> texturesList;
     for (const auto& fileName : fileNames) {
         if (textures.count(fileName) == 0)
             this->textures[fileName] = saveTexture(fileName);
         texturesList.push_back(this->textures[fileName]);
     }
-    textureBag[textureName] = texturesList;
+    return texturesList;
 }
-
 
 SDL_Texture* TextureRepository::saveTexture(std::string file_name)
 {
