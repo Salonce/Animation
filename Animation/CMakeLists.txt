@@ -8,7 +8,7 @@ find_package(SDL2_IMAGE REQUIRED SDL2_image>=2.0.0)
 
 
 #add_executable (SDL2_Demo WIN32 )
-add_executable (Animation "Animation.cpp" "Animation.h" "entities/Obj.h" "entities/Player.cpp" "entities/Player.h" "entities/Sprite.cpp" "entities/Sprite.h" "entities/interfaces/Obstacle.h" "entities/interfaces/Renderable.h" "entities/enums/Direction.h" "entities/enums/Surface.h" "repositories/SpriteRepository.h" "repositories/TextureRepository.h"  "utils/CompareRenderables.h"     "services/ObstaclesService.h" "services/RenderablesService.h" "repositories/TextureRepository.cpp" "services/SpriteFactory.h" "services/ObjFactory.h" "services/PlayerService.h" "repositories/PlayerRepository.h" "services/Renderer.h" "entities/MovingSprite.h" "repositories/MovingSpriteRepository.h" "entities/interfaces/Repository.h" "services/MovablesService.h")
+add_executable (Animation "Animation.cpp" "Animation.h" "entities/Obj.h" "players/Player.cpp" "players/Player.h" "sprites/Sprite.cpp" "sprites/Sprite.h" "obstacles/Obstacle.h" "renderables/Renderable.h" "entities/enums/Direction.h" "entities/enums/Surface.h" "sprites/SpriteRepository.h" "textures/TextureRepository.h"  "utils/CompareRenderables.h"     "obstacles/ObstaclesService.h" "renderables/RenderablesService.h" "textures/TextureRepository.cpp" "sprites/SpriteFactory.h" "services/ObjFactory.h" "players/PlayerService.h" "players/PlayerRepository.h" "renderables/Renderer.h" "movingSprites/MovingSprite.h" "movingSprites/MovingSpriteRepository.h" "entities/interfaces/Repository.h" "services/MovablesService.h")
 
 
 
@@ -24,11 +24,13 @@ endif()
 
 
 target_include_directories(Animation PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/entities
-    ${CMAKE_CURRENT_SOURCE_DIR}/entities/enums
-    ${CMAKE_CURRENT_SOURCE_DIR}/entities/interfaces
-    ${CMAKE_CURRENT_SOURCE_DIR}/repositories
-    ${CMAKE_CURRENT_SOURCE_DIR}/utils
+    ${CMAKE_CURRENT_SOURCE_DIR}/enums
+    ${CMAKE_CURRENT_SOURCE_DIR}/interfaces
     ${CMAKE_CURRENT_SOURCE_DIR}/services
+    ${CMAKE_CURRENT_SOURCE_DIR}/sprites
+    ${CMAKE_CURRENT_SOURCE_DIR}/players
+    ${CMAKE_CURRENT_SOURCE_DIR}/textures
+    ${CMAKE_CURRENT_SOURCE_DIR}/obstacles
+    ${CMAKE_CURRENT_SOURCE_DIR}/renderables
 )
 

@@ -31,15 +31,17 @@ int main(int argc, char* args[])
     TextureRepository textureRepository = TextureRepository(&renderer);
     PlayerRepository playerRepository;
     SpriteRepository spriteRepository;
+    MovingSpriteRepository movingSpriteRepository;
     ObjRepository objRepository;
+    SpriteFactory spriteFactory(&textureRepository, &spriteRepository, &movingSpriteRepository);
+    ObjFactory objFactory(&textureRepository, &objRepository, &playerRepository);
+
+
     ObstaclesService obstaclesService(&objRepository, &playerRepository);
     PlayerService playerService(&playerRepository, &obstaclesService);
-    MovingSpriteRepository movingSpriteRepository;
     MovablesService movablesService(&movingSpriteRepository);
     RenderablesService renderablesService(&playerRepository, &spriteRepository, &objRepository, &movingSpriteRepository ,&renderer);
     
-    SpriteFactory spriteFactory(&textureRepository, &spriteRepository, &movingSpriteRepository);
-    ObjFactory objFactory(&textureRepository, &objRepository, &playerRepository);
 
 
     srand((unsigned)time(nullptr)); int random = rand();  //// RANDOM NUMBER GENERATOR
@@ -74,6 +76,12 @@ int main(int argc, char* args[])
         objFactory.puddle(x, y);
     }
 
+
+    objFactory.willow(85, 11);
+    objFactory.willow(85, 71);
+    objFactory.puddle(51, 89);
+
+
     spriteFactory.clouds(600, 559);
 
     objFactory.makePlayer(314, 181);
@@ -94,7 +102,7 @@ int main(int argc, char* args[])
 
         //GENERATE RANDOM 
        // for (int i = 0; i <= 10; i++) {
-            int x = renderer.getScreenWidth() + 128 + 600;
+            int x = renderer.getScreenWidth() + 500;
             int y = -64 + rand() % (renderer.getScreenHeight() + 128);
             spriteFactory.clouds(x, y);
       //  }
@@ -105,7 +113,6 @@ int main(int argc, char* args[])
 
         //RENDERING START
         renderer.clearBackBuffer(); 
-
         playerService.playerMoves();
         movablesService.autoMoveAll();
         renderablesService.renderAll();
