@@ -27,7 +27,7 @@ struct SpriteFactory {
 	}
 
 	void clouds(int x, int y) {
-		MovingSprite* movingSprite = new MovingSprite(x, y, SKY, textureRepository->newGroup({ "clouds.png" }), [](int& x, int& y) {x--; });
+		MovingSprite* movingSprite = new MovingSprite(x, y, SKY, textureRepository->newGroup({ "kritacloud.png" }), [](int& x, int& y) {x--; });
 		movingSpriteRepository->add(movingSprite);
 		// push this sprite into repo, then load from repo in Animation.cpp
 	}

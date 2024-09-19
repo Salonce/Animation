@@ -16,13 +16,13 @@ std::vector<SDL_Texture*> TextureRepository::newGroup(const std::vector<std::str
     std::vector<SDL_Texture*> texturesList;
     for (const auto& fileName : fileNames) {
         if (textures.count(fileName) == 0)
-            this->textures[fileName] = saveTexture(fileName);
+            this->textures[fileName] = loadAlphaTexture(fileName);
         texturesList.push_back(this->textures[fileName]);
     }
     return texturesList;
 }
 
-SDL_Texture* TextureRepository::saveTexture(std::string file_name)
+SDL_Texture* TextureRepository::loadTexture(std::string file_name)
 {
     std::string fullPath = "images/" + file_name;
     SDL_Texture* newTexture = nullptr;
@@ -40,16 +40,19 @@ SDL_Texture* TextureRepository::saveTexture(std::string file_name)
     return newTexture;
 }
 
-SDL_Surface* TextureRepository::loadSurface(const std::string& file_name) {
+SDL_Texture* TextureRepository::loadAlphaTexture(std::string file_name) {
     std::string fullPath = "images/" + file_name;
-    SDL_Surface* gHelloWorld = SDL_LoadBMP(fullPath.c_str());
-    if (gHelloWorld == nullptr)
-        printf("Unable to load image %s! SDL Error: %s\n", "images/demo.bmp", SDL_GetError());
-    return gHelloWorld;
-}
-
-SDL_Texture* TextureRepository::loadAlphaTexture(const char* file_name) {
-    SDL_Texture* sdl_texture = IMG_LoadTexture(renderer->getRenderer(), file_name) {
-
+    SDL_Texture* sdl_texture = IMG_LoadTexture(renderer->getRenderer(), fullPath.c_str());
+    if (sdl_texture == NULL) {
+        printf("Can't load %s: %s\n", file_name.c_str(), IMG_GetError());
     }
+    return sdl_texture;
 }
+
+//SDL_Surface* TextureRepository::loadSurface(const std::string& file_name) {
+//    std::string fullPath = "images/" + file_name;
+//    SDL_Surface* gHelloWorld = SDL_LoadBMP(fullPath.c_str());
+//    if (gHelloWorld == nullptr)
+//        printf("Unable to load image %s! SDL Error: %s\n", "images/demo.bmp", SDL_GetError());
+//    return gHelloWorld;
+//}
